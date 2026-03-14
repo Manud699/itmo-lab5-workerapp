@@ -1,0 +1,42 @@
+help
+info
+show
+add
+Manu
+15.5
+20.0
+65000
+MANAGER
+FIRED
+ITMO Labs
+1500000.0
+300
+add
+Alex
+-5.0
+12.4
+45000
+LABORER
+FIRED
+TechCorp
+500000.0
+50
+show
+sum_of_salary
+print_field_descending_salary
+update 1
+Manu_Senior
+15.5
+20.0
+80000
+HEAD_OF_DEPARTMENT
+RECOMMENDED_FOR_PROMOTION
+ITMO Labs
+1500000.0
+300
+head
+remove_head
+remove_all_by_position LABORER
+history
+show
+save

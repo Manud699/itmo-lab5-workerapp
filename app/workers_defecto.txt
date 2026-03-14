@@ -1,0 +1,2 @@
+5,Manuel,123123.0,1241241.0,2026-03-14T19:10:10.244780400+03:00[Europe/Moscow],99991999,ENGINEER,REGULAR,nfjdwnfkjandkjnqkjnkjsandkjnjsdajjjajjajjajajajjajjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj,9.01249E8,12412
+6,Manu,15.5,20.0,2026-03-14T22:37:54.332639300+03:00[Europe/Moscow],65000,MANAGER,FIRED,ITMO Labs,1500000.0,300
