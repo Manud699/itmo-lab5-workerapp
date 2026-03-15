@@ -3,8 +3,9 @@ package workerapp.repository.file;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import workerapp.api.WorkerMapper;
+
 import workerapp.cli.Console;
+import workerapp.mappersCsv.WorkerMapper;
 import workerapp.repository.WorkerRepository;
 
 public class LoadFromCSV implements FormLoad {

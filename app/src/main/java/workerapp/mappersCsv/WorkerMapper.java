@@ -1,4 +1,4 @@
-package workerapp.api;
+package workerapp.mappersCsv;
 
 import workerapp.model.Coordinates;
 import workerapp.model.Organization;
@@ -11,12 +11,11 @@ import java.time.format.DateTimeParseException;
 public class WorkerMapper {
 
     public static Worker fromCsvLine(String csvLine) throws Exception {
-        // 1. Bug Fix: Prevenir que intenten parsear líneas completamente vacías o nulas
-        if (csvLine == null || csvLine.trim().isEmpty()) {
+            if (csvLine == null || csvLine.trim().isEmpty()) {
             throw new IllegalArgumentException("CSV line cannot be null or empty");
         }
 
-        // 2. Bug Fix: El "-1" asegura que si la última columna está vacía, no se borre del arreglo
+        
         String[] parts = csvLine.split(",", -1);
 
         if (parts.length < 11) {

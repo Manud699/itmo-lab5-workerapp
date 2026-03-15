@@ -5,8 +5,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import workerapp.api.WorkerToCsvLine;
 import workerapp.cli.Console;
+import workerapp.mappersCsv.WorkerToCsvLine;
 import workerapp.model.Worker;
 import workerapp.repository.WorkerRepository;
 

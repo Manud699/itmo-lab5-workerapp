@@ -1,10 +1,10 @@
-package workerapp.api;
+package workerapp.mappersCsv;
 
 import workerapp.model.Worker;
 
 public class WorkerToCsvLine {
     
-    public static String toCsvLine(Worker worker) {            //Necesito crear una Exeption que retorne si el formato no es el esperado
+    public static String toCsvLine(Worker worker) {           
         
         StringBuilder sb = new StringBuilder();
         sb.append(worker.getId()).append(",");

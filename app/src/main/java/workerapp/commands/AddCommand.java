@@ -1,8 +1,7 @@
 package workerapp.commands;
 
-
 import workerapp.cli.Console;
-import workerapp.model.build.WorkerBuilder;
+import workerapp.model.builders.WorkerBuilder;
 import workerapp.repository.WorkerRepository;
 
 
@@ -11,7 +10,8 @@ public class AddCommand extends AbstractCommand {
     private final WorkerRepository workerRepository;
     private final Console console; 
     private final WorkerBuilder formWorker; 
-    
+
+
 
     public AddCommand(WorkerRepository workerRepository, Console console, WorkerBuilder formWorker) {
         super("add", "Adds a new worker to the collection");

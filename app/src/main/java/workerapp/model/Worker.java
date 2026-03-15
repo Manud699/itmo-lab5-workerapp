@@ -1,6 +1,6 @@
 package workerapp.model;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
+
 
 public class Worker implements Comparable<Worker> {
     
@@ -24,11 +24,9 @@ public class Worker implements Comparable<Worker> {
         this.status = status; 
         this.organization = organization;
     } 
-    
-    
 
 
-    //getter
+
     public long getId() {
         return id; 
     } 
@@ -43,7 +41,6 @@ public class Worker implements Comparable<Worker> {
 
     public Coordinates getCoordinates(){
         return coordinates;
-
     } 
 
 
@@ -63,8 +60,9 @@ public class Worker implements Comparable<Worker> {
     public Position getPosition() {
         return position; 
     }
-    
-    
+
+
+
     public Status getStatus() {
         return status; 
     }
@@ -74,11 +72,9 @@ public class Worker implements Comparable<Worker> {
     public Organization getOrganization() {
         return organization; 
     } 
-    
 
 
 
-    //setters
     public void setId(long id) {
         this.id = id; 
     } 
@@ -108,46 +104,19 @@ public class Worker implements Comparable<Worker> {
     } 
 
 
+
     @Override
     public String toString() {
-        // 1. Limpieza de datos base
-        String safeName = (name != null && name.length() > 15) ? name.substring(0, 12) + "..." : name;
-        
-        String coordsStr = (coordinates != null) ? "(" + coordinates.getX() + ", " + coordinates.getY() + ")" : "N/A";
-        if (coordsStr.length() > 12) coordsStr = coordsStr.substring(0, 9) + "...";
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        String dateStr = (creationDate != null) ? creationDate.format(formatter) : "N/A";
-        
-        String safePos = (position != null) ? position.name() : "N/A";
-        String safeStatus = (status != null) ? status.name() : "N/A";
-
-        
-        String orgName = "N/A";
-        String orgTurnover = "N/A";
-        String orgEmp = "N/A";
-        
-        if (organization != null) {
-            orgName = organization.getFullName();
-            if (orgName.length() > 15) orgName = orgName.substring(0, 12) + "...";
-            
-            // Formateamos el float para que se vea limpio (ej. 1500000.0)
-            orgTurnover = String.format("%.1f", organization.getAnnualTurnover());
-            orgEmp = String.valueOf(organization.getEmployeesCount());
-        }
-
-        // 3. Plantilla expandida (Agregamos %-12s para Turnover y %-9s para Employees)
-        return String.format("%-4d | %-15s | %-12s | %-16s | %-8d | %-18s | %-15s | %-15s | %-12s | %-9s", 
-                id, 
-                safeName, 
-                coordsStr, 
-                dateStr, 
-                salary, 
-                safePos, 
-                safeStatus, 
-                orgName,
-                orgTurnover,
-                orgEmp);
+        return "Worker{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", coordinates=" + coordinates +
+                ", creationDate=" + creationDate +
+                ", salary=" + salary +
+                ", position=" + position +
+                ", status=" + status +
+                ", organization=" + organization +
+                '}';
     }
 
 }

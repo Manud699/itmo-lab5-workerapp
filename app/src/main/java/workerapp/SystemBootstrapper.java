@@ -2,9 +2,9 @@ package workerapp;
 
 import workerapp.cli.*;
 import workerapp.commands.*;
-import workerapp.model.build.CoordinatesBuild;
-import workerapp.model.build.OrganizationBuild;
-import workerapp.model.build.WorkerBuilder;
+import workerapp.model.builders.CoordinatesBuilder;
+import workerapp.model.builders.OrganizationBuilder;
+import workerapp.model.builders.WorkerMainBuilder;
 import workerapp.repository.CommandRegistry;
 import workerapp.repository.ScriptExecutionStack;
 import workerapp.repository.WorkerRepository;
@@ -23,9 +23,9 @@ public class SystemBootstrapper {
     private String[] argumentsFromMain;
     private FormLoad formLoad; 
     private FormSave formSave; 
-    private WorkerBuilder workerBuilder;
-    private CoordinatesBuild coordinatesBuild;
-    private OrganizationBuild organizationBuild;
+    private WorkerMainBuilder workerBuilder;
+    private CoordinatesBuilder coordinatesBuild;
+    private OrganizationBuilder organizationBuild;
 
 
 
@@ -73,9 +73,9 @@ public class SystemBootstrapper {
 
 
     public void initBuildersMainObject() {
-        this.coordinatesBuild = new CoordinatesBuild(inputProvider, console);
-        this.organizationBuild = new OrganizationBuild(inputProvider, console);
-        this.workerBuilder = new WorkerBuilder(inputProvider, console);
+        this.coordinatesBuild = new CoordinatesBuilder(inputProvider, console);
+        this.organizationBuild = new OrganizationBuilder(inputProvider, console);
+        this.workerBuilder = new WorkerMainBuilder(inputProvider, console);
         workerBuilder.setCoordinatesBuild(coordinatesBuild);
         workerBuilder.setOrganizationBuilder(organizationBuild);
     }

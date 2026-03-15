@@ -2,7 +2,7 @@ package workerapp.commands;
 
 import workerapp.cli.Console;
 import workerapp.model.Worker;
-import workerapp.model.build.WorkerBuilder;
+import workerapp.model.builders.WorkerBuilder;
 import workerapp.repository.WorkerRepository;
 
 public class UpdateByIdCommand extends AbstractCommand {

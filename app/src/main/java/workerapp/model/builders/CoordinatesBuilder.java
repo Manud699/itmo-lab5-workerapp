@@ -1,0 +1,27 @@
+package workerapp.model.builders;
+
+import workerapp.cli.Console;
+import workerapp.cli.InputProvider;
+import workerapp.model.Coordinates;
+
+
+public class CoordinatesBuilder extends AbstractConsoleBuilder<Coordinates> {
+
+    private final float MIN_COORDINATE_X = -497;  
+    private final double MIN_COORDINATE_Y = -764;
+
+    public CoordinatesBuilder(InputProvider inputProvider, Console console){
+        super(inputProvider ,console); 
+    } 
+
+
+    @Override
+    public Coordinates build() {
+
+        return new Coordinates((float)askNumber("Coordenada X", "[must be greater than -497]", x -> x > MIN_COORDINATE_X && x!= null, Float::parseFloat), 
+                                askNumber("Coordenada Y","[must be greater than -497/It cannot be null]", y -> y > MIN_COORDINATE_Y && y != null, Double::parseDouble)); 
+        }
+
+
+
+}

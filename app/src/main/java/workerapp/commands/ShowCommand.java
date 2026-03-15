@@ -1,6 +1,7 @@
 package workerapp.commands;
 
 import workerapp.cli.Console;
+import workerapp.cli.formatters.TableDisplayable;
 import workerapp.repository.WorkerRepository;
 
 
@@ -25,10 +26,11 @@ public class ShowCommand extends AbstractCommand implements TableDisplayable {
         if(!validateNoArgument(argument, console)){
             return 1; 
         }
-        if (workerRepository.getSize() == 0) {
+        if (workerRepository.isCollectionEmpty()) {
             console.println("The collection is empty.");
             return 1;
         }
+
         printWorkerTable(workerRepository.getWorkers().stream().toList(), console);
         return 0;
     }

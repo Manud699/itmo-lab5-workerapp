@@ -3,6 +3,7 @@ package workerapp.commands;
 
 
 import workerapp.cli.Console;
+import workerapp.cli.formatters.TableDisplayable;
 import workerapp.model.Worker;
 import workerapp.repository.WorkerRepository;
 
@@ -26,15 +27,15 @@ public class HeadCommand extends AbstractCommand implements TableDisplayable {
 
         if(!validateNoArgument(argms, console)) {
             return 1; 
-        } 
-        Worker worker = workerRepository.getHead(); 
-            if(worker !=null ){
+        }
+        if(workerRepository.isCollectionEmpty()) {
+            console.println("The collection is empty. No head element to show.");
+            return 2; 
+        }
+        Worker firstWorker = workerRepository.getHead(); 
             console.println("First worker in the collection:");
-            printWorkerTable(worker, console);
+            printWorkerTable(firstWorker, console);
             return 0; 
         } 
-        console.printError("The collection is empty.");
-        return 1; 
-
-    } 
+    
 }
