@@ -12,51 +12,49 @@ import workerapp.repository.WorkerRepository;
 
 public class SaveToCSV implements FormSave {
     
-    private  String stringToFile;
+    private final File file;
     private final Console console; 
     private final WorkerRepository workers;
-    
 
-    public SaveToCSV(String  stringToFile, Console console, WorkerRepository workers) {
+    public SaveToCSV(File file, Console console, WorkerRepository workers) {
+        this.file = file;
         this.console = console;
-        this.stringToFile = stringToFile; 
         this.workers = workers; 
     }       
 
     @Override
-    public void save()  {
-        File file = new File(stringToFile);
-        if(!file.exists()) {
-            try {
-                file.createNewFile();
-                console.println("Target file missing. Creating: " + stringToFile);
-            } catch (IOException e) {
-                console.printError("Failed to create file:"  + e.getMessage());
+    public void save() {
+        File targetFile = this.file;
+    
+        if (!FileValidator.isValidForWrite(targetFile, console)) {
+            targetFile = new File("dafault.csv");
+            if (!FileValidator.isValidForWrite(targetFile, console)) {
+                console.printError("Critical Error: dafault path is also blocked. Data cannot be saved.");
+                return;
             }
         }
 
-        if(file.isDirectory()) {
-            console.println("Error: Path is a directory, not a file: '" + stringToFile + "'"); 
-            return; 
+        if (!targetFile.exists()) {
+            try {
+                targetFile.createNewFile();
+                console.println("Notice: Created save file at: " + targetFile.getAbsolutePath());
+            } catch (IOException e) {
+                console.printError("Failed to create file: " + e.getMessage());
+                return;
+            }
         }
 
-        if (!file.canWrite()) {
-            console.printError("Error: No write permissions for the specified file.");
-            return; 
-        }
-        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(targetFile))) {
             for (Worker worker : workers.getWorkers()) {
                 String workerToSave = WorkerToCsvLine.toCsvLine(worker);
                 bufferedWriter.write(workerToSave);
                 bufferedWriter.newLine();
             }
-            console.println("Workers successfully saved to file.");
+            console.println("Workers successfully saved to file: " + targetFile.getName());
         } catch (IOException e) {
-            console.printError("I/O error while saving: "+ e.getMessage());
-            return; 
-        } catch(Exception e){
-            console.printError("Unexpected error:" + e.getMessage());
-            return;
+            console.printError("I/O error while saving: " + e.getMessage());
+        } catch (Exception e) {
+            console.printError("Unexpected error: " + e.getMessage());
         }
     } 
 }

@@ -2,7 +2,7 @@ package workerapp.commands;
 
 import workerapp.cli.Console;
 import workerapp.model.Worker;
-import workerapp.model.builders.WorkerBuilder;
+import workerapp.model.builders.WorkerMainBuilder;
 import workerapp.repository.WorkerRepository;
 
 public class UpdateByIdCommand extends AbstractCommand {
@@ -10,10 +10,10 @@ public class UpdateByIdCommand extends AbstractCommand {
     private final WorkerRepository workerRepository;
     private final Console console; 
     private static final long INVALID_NUMBER_FORMAT = -1L;
-    private final WorkerBuilder workerBuilder; 
+    private final WorkerMainBuilder workerBuilder; 
     
 
-    public UpdateByIdCommand(WorkerRepository workerRepository, Console console, WorkerBuilder workerBuilder) {
+    public UpdateByIdCommand(WorkerRepository workerRepository, Console console, WorkerMainBuilder workerBuilder) {
         super("update_by_id", "Updates a worker by ID"); 
         this.workerRepository = workerRepository; 
         this.console = console; 

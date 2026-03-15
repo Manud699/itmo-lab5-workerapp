@@ -3,7 +3,7 @@ package workerapp.model.builders;
 import workerapp.cli.Console;
 import workerapp.cli.InputProvider;
 import workerapp.model.Coordinates;
-import workerapp.model.WorkerIdManager;
+import workerapp.model.WorkerIdGenerator;
 import workerapp.model.Organization;
 import workerapp.model.Position;
 import workerapp.model.Status;
@@ -33,7 +33,7 @@ public class WorkerMainBuilder extends AbstractConsoleBuilder<Worker> {
     @Override
     public Worker build() {
             return new Worker(
-                            WorkerIdManager.generateID(), 
+                            WorkerIdGenerator.generateID(), 
                             askName(),
                             askCoordinates(),
                             ZonedDateTime.now(),

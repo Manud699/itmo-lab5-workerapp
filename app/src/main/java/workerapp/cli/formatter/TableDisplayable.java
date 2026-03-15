@@ -1,4 +1,4 @@
-package workerapp.cli.formatters;
+package workerapp.cli.formatter;
 
 import java.util.Locale;
 import java.time.format.DateTimeFormatter;

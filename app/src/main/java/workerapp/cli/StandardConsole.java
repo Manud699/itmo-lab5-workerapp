@@ -26,13 +26,13 @@ public  class StandardConsole implements Console  {
 
     @Override
     public void printTable(Object elementleft, Object elementRight) {
-        System.out.printf(" %-20s%-1s%n", elementleft, elementRight);
+        System.out.printf(" %-32s%-1s%n", elementleft, elementRight);
     }
 
 
     @Override
     public void printError(Object message) {
-    System.out.println("\u001B[31mError: " + message + "\u001B[0m"); 
+    System.out.println("\u001B[31m" + message + "\u001B[0m"); 
 }
 
 

@@ -6,7 +6,7 @@ import java.util.Deque;
 
 import workerapp.cli.Console;
 import workerapp.model.Worker;
-import workerapp.model.WorkerIdManager;
+import workerapp.model.WorkerIdGenerator;
 import workerapp.repository.file.FormLoad;
 import workerapp.repository.file.FormSave;
 
@@ -36,7 +36,7 @@ public class WorkerRepository {
 
     public void load() {
         formLoad.load();
-        WorkerIdManager.syncWithExistingWorkers(workers);
+        WorkerIdGenerator.syncWithExistingWorkers(workers);
     } 
 
 

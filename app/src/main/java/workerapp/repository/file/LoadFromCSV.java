@@ -2,39 +2,35 @@ package workerapp.repository.file;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 import workerapp.cli.Console;
 import workerapp.mappersCsv.WorkerMapper;
+import workerapp.model.Worker;
 import workerapp.repository.WorkerRepository;
 
 public class LoadFromCSV implements FormLoad {
 
-    private String toFile;
+    private final File file;
     private final Console console;
     private final WorkerRepository workerRepository; 
 
-    public LoadFromCSV(String toFile, Console console, WorkerRepository workerRepository) {
-        this.toFile = toFile; 
+    public LoadFromCSV(File file, Console console, WorkerRepository workerRepository) {
+        this.file = file;
         this.console = console;
         this.workerRepository = workerRepository;
     }
 
+
+    
     @Override
     public void load() {
-        File file = new File(toFile);
-        if (file.isDirectory()) {
-            console.printError("Error: Path is a directory, not a file: '" + toFile + "'");
-            return;
+        if (!FileValidator.isValidForRead(file, console)) {
+            return; 
         }
-        if (!file.exists()) {
-            console.printError("Error: Target file does not exist: '" + toFile + "'");
-            return;
-        }  
-        if (!file.canRead()) {
-            console.printError("Error: No read permissions for file: '" + toFile + "'");
-            return;
-        }
+        Set<Long> loadedIds = new HashSet<>();
         try (Scanner scanner = new Scanner(file)) {
             int lineNumber = 0;   
             while (scanner.hasNextLine()) {
@@ -44,12 +40,19 @@ public class LoadFromCSV implements FormLoad {
                     continue;
                 }
                 try {
-                    workerRepository.add(WorkerMapper.fromCsvLine(line));
-                } catch (Exception e) {
+                    Worker worker = WorkerMapper.fromCsvLine(line);
+                    if (!loadedIds.add(worker.getId())) {
+                        console.printError("Warning on line " + lineNumber + ": Duplicate ID found '" + worker.getId() + "''. Skipping.");
+                        continue;
+                    }
+                    workerRepository.add(worker);
+                } catch (IllegalArgumentException e) {
+                    console.printError("Validation error on line " + lineNumber + ": " + e.getMessage());
+                } catch(Exception e) {
                     console.printError("Data parsing error on line " + lineNumber + ": " + e.getMessage());
                 }
             }
-            console.println("Workers loaded successfully. Total: " + workerRepository.getSize());
+            console.println("Workers loaded successfully. Total: " + workerRepository.getSize());   
         } catch (FileNotFoundException e) {
             console.printError("File access error: " + e.getMessage());
         } catch (Exception e) {

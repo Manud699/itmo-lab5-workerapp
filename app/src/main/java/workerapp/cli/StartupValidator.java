@@ -2,7 +2,7 @@ package workerapp.cli;
 
 public class StartupValidator {
     
-    private static final String DEFAULT_FILE = "workers_defecto.txt";
+    private static final String DEFAULT_FILE = "workers_defecto.csv";
 
     public static String getValidFileName(String[] args, Console console) {
 

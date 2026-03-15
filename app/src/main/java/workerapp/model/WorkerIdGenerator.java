@@ -2,7 +2,7 @@ package workerapp.model;
 
 import java.util.Deque;
 
-public class WorkerIdManager {
+public class WorkerIdGenerator {
 
     private static long nextId = 1L; 
 

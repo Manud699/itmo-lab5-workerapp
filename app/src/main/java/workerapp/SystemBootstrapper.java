@@ -1,5 +1,7 @@
 package workerapp;
 
+import java.io.File;
+
 import workerapp.cli.*;
 import workerapp.commands.*;
 import workerapp.model.builders.CoordinatesBuilder;
@@ -64,8 +66,9 @@ public class SystemBootstrapper {
 
     public void initFileStructure(){
         String file = StartupValidator.getValidFileName(argumentsFromMain, console);
-        this.formLoad = new LoadFromCSV(file, console, this.workerRepository);
-        this.formSave = new SaveToCSV(file, console, this.workerRepository);
+        File dataBaseFile = new File(file);
+        this.formLoad = new LoadFromCSV(dataBaseFile, console, this.workerRepository);
+        this.formSave = new SaveToCSV(dataBaseFile, console, this.workerRepository);
         this.workerRepository.setFormLoad(this.formLoad);
         this.workerRepository.setFormSave(this.formSave);
     }

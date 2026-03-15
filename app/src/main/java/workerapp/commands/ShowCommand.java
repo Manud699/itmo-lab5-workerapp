@@ -1,7 +1,7 @@
 package workerapp.commands;
 
 import workerapp.cli.Console;
-import workerapp.cli.formatters.TableDisplayable;
+import workerapp.cli.formatter.TableDisplayable;
 import workerapp.repository.WorkerRepository;
 
 
