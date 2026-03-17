@@ -86,12 +86,8 @@ public class WorkerRepository {
 
 
 
-    public boolean show(Console console){
-        if(workers.isEmpty()) {
-            return false; 
-        } 
+    public void show(Console console){
         workers.stream().map(Object::toString).forEach(console::println);
-        return true; 
     } 
 
 
@@ -151,6 +147,6 @@ public class WorkerRepository {
 
 
 
-    
+
 
 
