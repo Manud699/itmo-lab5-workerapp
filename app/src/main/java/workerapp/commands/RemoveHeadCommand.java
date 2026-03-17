@@ -2,11 +2,12 @@ package workerapp.commands;
 
 
 import workerapp.cli.Console;
+import workerapp.cli.formatter.TableDisplayable;
 import workerapp.model.Worker;
 import workerapp.repository.WorkerRepository;
 
 
-public class RemoveHeadCommand extends AbstractCommand{
+public class RemoveHeadCommand extends AbstractCommand implements TableDisplayable {
     
     
     private final Console console; 
@@ -31,9 +32,9 @@ public class RemoveHeadCommand extends AbstractCommand{
         
         Worker worker = workerRepository.removeHead(); 
         
-            if(worker !=null ){
+        if(worker !=null ){
             console.println("Successfully removed the first worker from the collection:");
-            console.println(worker.toString());
+            printWorkerTable(worker, console);
             return 0; 
         } 
 
