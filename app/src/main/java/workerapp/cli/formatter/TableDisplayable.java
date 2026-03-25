@@ -2,6 +2,7 @@ package workerapp.cli.formatter;
 
 import java.util.Locale;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.List;
 import workerapp.cli.Console;
 import workerapp.model.Worker;
@@ -45,6 +46,7 @@ public interface TableDisplayable {
         printSeparator(console);
         printHeader(console);
         printSeparator(console);
+        
         for (Worker worker : workers) {
             console.println(formatWorkerRow(worker));
         }

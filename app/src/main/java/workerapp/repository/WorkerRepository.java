@@ -2,7 +2,12 @@ package workerapp.repository;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayDeque;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.Deque;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import workerapp.cli.Console;
 import workerapp.model.Worker;
@@ -70,6 +75,12 @@ public class WorkerRepository {
 
     public ZonedDateTime getCreationDate() {
         return creationDate; 
+    } 
+
+
+
+    public List<Worker> getWorkersSortedById() {
+        return workers.stream().sorted(Comparator.comparing(Worker::getId)).collect(Collectors.toList());
     } 
 
 

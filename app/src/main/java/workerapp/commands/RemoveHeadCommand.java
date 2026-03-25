@@ -1,6 +1,5 @@
 package workerapp.commands;
 
-
 import workerapp.cli.Console;
 import workerapp.cli.formatter.TableDisplayable;
 import workerapp.model.Worker;
@@ -25,23 +24,17 @@ public class RemoveHeadCommand extends AbstractCommand implements TableDisplayab
 
     @Override
     public int execute(String argm) {
-
         if(!validateNoArgument(argm, console)) {
             return 1; 
         }
-        
         Worker worker = workerRepository.removeHead(); 
-        
         if(worker !=null ){
             console.println("Successfully removed the first worker from the collection:");
             printWorkerTable(worker, console);
             return 0; 
         } 
-
         console.printError("The collection is empty.");
         return 1; 
-        
-
     } 
 
 

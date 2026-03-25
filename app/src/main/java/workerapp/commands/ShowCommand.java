@@ -1,7 +1,12 @@
 package workerapp.commands;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.stream.Collectors;
+
 import workerapp.cli.Console;
 import workerapp.cli.formatter.TableDisplayable;
+import workerapp.model.Worker;
 import workerapp.repository.WorkerRepository;
 
 
@@ -31,7 +36,7 @@ public class ShowCommand extends AbstractCommand implements TableDisplayable {
             return 1;
         }
 
-        printWorkerTable(workerRepository.getWorkers().stream().toList(), console);
+        printWorkerTable(workerRepository.getWorkersSortedById(), console);
         return 0;
     }
 

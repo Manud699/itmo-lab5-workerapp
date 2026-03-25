@@ -20,7 +20,7 @@ public class WorkerMapper {
         String[] parts = csvLine.split(",", -1);
 
         if (parts.length < 11) {
-            throw new IllegalArgumentException("CSV line does not have the correct number of columns (expected 11): " + csvLine);
+            throw new IllegalArgumentException("CSV line does not have the correct number of columns (expected 11).");
         }
 
         try {
