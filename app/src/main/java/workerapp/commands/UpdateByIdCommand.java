@@ -1,15 +1,17 @@
 package workerapp.commands;
 
+import java.util.Optional;
+
 import workerapp.cli.Console;
 import workerapp.model.Worker;
 import workerapp.model.builders.WorkerMainBuilder;
 import workerapp.repository.WorkerRepository;
+import workerapp.util.NumberParseSafe;
 
 public class UpdateByIdCommand extends AbstractCommand {
 
     private final WorkerRepository workerRepository;
     private final Console console; 
-    private static final long INVALID_NUMBER_FORMAT = -1L;
     private final WorkerMainBuilder workerBuilder; 
     
 
@@ -28,15 +30,22 @@ public class UpdateByIdCommand extends AbstractCommand {
             console.printError("Worker ID must be provided.");
             return 1; 
         }
-        long workerId = parseWorkerId(argms);
-        if (workerId == INVALID_NUMBER_FORMAT) {
-            console.printError("Invalid number format. Please enter a valid whole number");
-            return -1; 
+        Optional<Long> parsingId = NumberParseSafe.parse(argms, Long::parseLong);
+        if(!parsingId.isPresent()) {
+            console.printError("Invalid number format. Please enter a valid whole number.");
+            return 2;
         }
+        
+        long workerId = parsingId.get();
         if(workerRepository.isWorkerId(workerId)) {
+            Worker workerToUpdate = workerRepository.getWorkerMap().get(workerId);
             console.println("Updating worker with ID " + workerId + "...");
             Worker newWorker = workerBuilder.build();
-            workerRepository.updateWorkerById(workerId, newWorker);
+            workerToUpdate.setName(newWorker.getName());
+            workerToUpdate.setCoordinates(newWorker.getCoordinates());
+            workerToUpdate.setSalary(newWorker.getSalary());
+            workerToUpdate.setPosition(newWorker.getPosition());
+            workerToUpdate.setOrganization(newWorker.getOrganization());
             console.println("Worker with ID " + workerId + " was successfully updated");
             return 0; 
         }    
@@ -45,13 +54,5 @@ public class UpdateByIdCommand extends AbstractCommand {
     } 
 
 
-
-    public long parseWorkerId(String workerId) {
-        try {
-            return Long.parseLong(workerId.trim());
-        } catch (NumberFormatException e) {
-            return INVALID_NUMBER_FORMAT;
-        }
-    } 
 
 }

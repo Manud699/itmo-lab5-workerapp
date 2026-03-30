@@ -40,12 +40,14 @@ public  class StandardConsole implements Console  {
     @Override
     public void ps2() {
         print(PS2);
+        System.out.flush();
     }
 
 
 
     public void ps1() {
         print(PS1);
+        System.out.flush();
     } 
 
 

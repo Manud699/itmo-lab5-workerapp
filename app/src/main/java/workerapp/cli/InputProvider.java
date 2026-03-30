@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class InputProvider {
 
-
     private final Deque<Scanner> scanners;
     private boolean isInteractiveMode = true; 
 

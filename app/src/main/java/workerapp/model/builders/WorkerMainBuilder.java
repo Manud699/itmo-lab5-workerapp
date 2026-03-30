@@ -29,7 +29,6 @@ public class WorkerMainBuilder extends AbstractConsoleBuilder<Worker> {
 
 
 
-
     @Override
     public Worker build() {
             return new Worker(

@@ -74,10 +74,45 @@ public class Worker implements Comparable<Worker> {
     } 
 
 
+    //setters
 
     public void setId(long id) {
         this.id = id; 
     } 
+
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+
+    public void setCoordinates(Coordinates  coordinates){
+        this.coordinates = coordinates;
+    }
+
+
+
+    public void setSalary(long salary){
+        this.salary = salary;
+    }
+
+
+
+    public void setPosition(Position position){
+        this.position =position;
+    }
+
+
+
+    public void setStatus(Status status){
+        this.status = status;
+    }
+
+
+
+    public void setOrganization(Organization organization){
+        this.organization = organization;
+    }
 
 
 

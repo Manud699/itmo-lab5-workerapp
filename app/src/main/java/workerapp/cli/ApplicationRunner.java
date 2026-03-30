@@ -23,6 +23,8 @@ public class ApplicationRunner {
         this.isRunning = true;
     }   
 
+
+
     public void start() {
         console.println("Your welcome to AppWorker. Enter 'help' for more information");
         while (isRunning) {

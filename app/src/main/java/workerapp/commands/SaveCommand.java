@@ -8,13 +8,13 @@ import workerapp.repository.WorkerRepository;
 public class SaveCommand extends AbstractCommand {
 
     private final Console console; 
-    private final WorkerRepository worlRepository; 
+    private final WorkerRepository workerRepository; 
 
 
     public SaveCommand(Console console, WorkerRepository workerRepository) {
         super("save", "Writes the collection data to the storage file");
         this.console = console;
-        this.worlRepository = workerRepository;
+        this.workerRepository = workerRepository;
     } 
 
 
@@ -23,7 +23,7 @@ public class SaveCommand extends AbstractCommand {
         if(!validateNoArgument(argms, console)) {
             return 1; 
         }
-        worlRepository.save(worlRepository.getWorkers()); 
+        workerRepository.save(workerRepository.getWorkers()); 
         return 0; 
     }  
 

@@ -8,7 +8,7 @@ import workerapp.repository.WorkerRepository;
 
 public class RemoveHeadCommand extends AbstractCommand implements TableDisplayable {
     
-    
+
     private final Console console; 
     private final WorkerRepository workerRepository; 
 

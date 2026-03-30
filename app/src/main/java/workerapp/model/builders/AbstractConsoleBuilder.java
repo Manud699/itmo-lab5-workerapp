@@ -4,17 +4,17 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.function.Function;
 import java.util.function.Predicate;
-
 import workerapp.cli.*;
 
-public  abstract class AbstractConsoleBuilder<T>  {
-    
+public abstract class AbstractConsoleBuilder<T>  {
+
 
     private final InputProvider inputProvider; 
     private Scanner scanner;
-    private final Console console; 
-
+    private final Console console;
     
+
+
     public AbstractConsoleBuilder(InputProvider inputProvider, Console console) {
         this.inputProvider = inputProvider;
         this.console = console; 
@@ -23,7 +23,16 @@ public  abstract class AbstractConsoleBuilder<T>  {
 
     public abstract T build();
 
-    
+
+
+    public boolean isSafeNextLine(Scanner scanner) { 
+        if(!scanner.hasNextLine()) {
+            return false;
+        } 
+        return true; 
+    }
+
+
 
     public String askString(String prompt, String restrictions, Predicate<String> validator) {
         while(true) {
@@ -32,11 +41,14 @@ public  abstract class AbstractConsoleBuilder<T>  {
                 console.ps2();
                 console.print("Enter " + prompt + " " + restrictions + ":" );
             }
+            if(!isSafeNextLine(scanner)){
+                console.println("Terminando programa");
+                System.exit(0);
+            }
             String inputLine = scanner.nextLine();
             if(validator.test(inputLine)) {
                 return inputLine; 
             }
-
             if(inputProvider.isInteractiveMode()) {
                 console.printError("Invalid input '"+inputLine+"'. Please try again.");
             } else {
@@ -54,13 +66,16 @@ public  abstract class AbstractConsoleBuilder<T>  {
                 console.ps2();
                 console.print("Enter " + prompt + " " + restrictions + ":" );
             }
+            if(!isSafeNextLine(scanner)){
+                console.println("Terminando programa");
+                System.exit(0);
+            }
             String inputLine = scanner.nextLine();
             try {
                 N enterUser = parse.apply(inputLine); 
                 if(validator.test(enterUser)){
                     return enterUser; 
                 }
-
                 if(inputProvider.isInteractiveMode()){
                     console.println("Invalid input. Please try again");
                 } else {
@@ -87,6 +102,10 @@ public  abstract class AbstractConsoleBuilder<T>  {
                 console.println("Enter "+ prompt);
                 console.print("Available options " + Arrays.toString(valoresAceptados) +":" );
             }
+            if(!isSafeNextLine(scanner)){
+                console.println("Terminando programa");
+                System.exit(0);
+            }
             String inputLine = scanner.nextLine();
             for(E item : valoresAceptados) {
                 if(item.name().equals(inputLine.trim().toUpperCase())) {
@@ -100,14 +119,6 @@ public  abstract class AbstractConsoleBuilder<T>  {
             } 
         } 
     } 
-
-
-
-
-
-
-
-
 
 
 }    

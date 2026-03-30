@@ -16,7 +16,6 @@ public class PrintFieldDescendingSalaryCommand extends AbstractCommand {
         this.workerRepository = workerRepository; 
         this.console = console;
     }
-
     @Override
     public int execute(String argms) {
         if(!validateNoArgument(argms, console)) {

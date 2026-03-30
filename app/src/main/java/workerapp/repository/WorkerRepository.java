@@ -2,11 +2,10 @@ package workerapp.repository;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayDeque;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.Deque;
 import java.util.List;
-import java.util.stream.Collector;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import workerapp.cli.Console;
@@ -27,8 +26,6 @@ public class WorkerRepository {
     public WorkerRepository() { 
         this.workers = new ArrayDeque<>();
         this.creationDate = ZonedDateTime.now();
-        
-        
     }
 
 
@@ -46,11 +43,8 @@ public class WorkerRepository {
 
 
 
-    public void updateWorkerById(long id, Worker newWorker) {
-        removeById(id); 
-        workers.add(newWorker);
-        newWorker.setId(id);
-        
+    public void updateWorkerById(Worker workerUpdated) {
+        workers.add(workerUpdated);
     }
 
 
@@ -141,6 +135,12 @@ public class WorkerRepository {
 
     public void printFieldDescendingSalary(Console console) {
         workers.stream().map(Worker::getSalary).sorted(java.util.Comparator.reverseOrder()).forEach(salary -> console.println(" > " + salary));;
+    }
+
+
+
+    public Map<Long, Worker> getWorkerMap() {
+        return workers.stream().collect(Collectors.toMap(Worker::getId, worker -> worker));
     }
 
 
