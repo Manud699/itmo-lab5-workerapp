@@ -8,6 +8,11 @@ import workerapp.mappersCsv.WorkerMapper;
 import workerapp.model.Worker;
 import workerapp.repository.WorkerRepository;
 
+
+/**
+ * Class LoadFromCSV
+ * Is responsible for loading Worker data from a CSV file into the WorkerRepository
+ */
 public class LoadFromCSV implements FormLoad {
 
     private final File file;
@@ -35,6 +40,9 @@ public class LoadFromCSV implements FormLoad {
 
 
 
+    /**
+     * @return true if the loading process completed successfully, false otherwise
+     */
     private boolean executeLoadProtocol() {
         int lineNumber = 0;
         try (Scanner scanner = new Scanner(file)) {
@@ -58,7 +66,11 @@ public class LoadFromCSV implements FormLoad {
 
 
 
-
+    /**
+     *      
+     * @param line the line from the CSV file to process
+     * @param lineNumber the line number in the CSV file for error reporting
+     */
     private void processSingleLine(String line, int lineNumber) {
         try {
             Worker worker = WorkerMapper.fromCsvLine(line);        

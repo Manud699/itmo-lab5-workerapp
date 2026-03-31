@@ -3,6 +3,10 @@ package workerapp.commands;
 import workerapp.cli.Console;
 import workerapp.repository.WorkerRepository;
 
+/**
+ * Command: print_field_descending_salary
+ * Description: Prints the salary field values of all the elements in descending order.
+ */
 public class PrintFieldDescendingSalaryCommand extends AbstractCommand {
 
 
@@ -16,6 +20,15 @@ public class PrintFieldDescendingSalaryCommand extends AbstractCommand {
         this.workerRepository = workerRepository; 
         this.console = console;
     }
+
+
+
+    /**
+     * Executes the print_field_descending_salary command.
+     * 
+     * @param argms the command arguments
+     * @return 0 if successful, another value if validation fails
+     */
     @Override
     public int execute(String argms) {
         if(!validateNoArgument(argms, console)) {

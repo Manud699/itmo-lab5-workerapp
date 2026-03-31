@@ -3,6 +3,11 @@ package workerapp.commands;
 import workerapp.cli.Console;
 import workerapp.repository.CommandRegistry;
 
+
+/**
+ * Command: HistoryCommand
+ * Command description: Prints the last 11 executed commands (without their arguments).
+ */
 public class HistoryCommand extends AbstractCommand {
 
     private final Console console; 
@@ -18,6 +23,12 @@ public class HistoryCommand extends AbstractCommand {
 
 
 
+    /**
+     * Executes the history command.
+     * 
+     * @param argument the command argument
+     * @return 0 if successful, another value if validation fails
+     */
     @Override
     public int execute(String argument){
         if(!validateNoArgument(argument, console)) {

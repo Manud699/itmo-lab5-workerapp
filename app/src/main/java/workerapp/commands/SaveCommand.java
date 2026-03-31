@@ -1,10 +1,13 @@
 package workerapp.commands;
 
-
-
 import workerapp.cli.Console;
 import workerapp.repository.WorkerRepository;
 
+
+/**
+ * Command: SaveCommand 
+ * Command description: Writes the collection data to the storage file.
+ */
 public class SaveCommand extends AbstractCommand {
 
     private final Console console; 
@@ -18,12 +21,19 @@ public class SaveCommand extends AbstractCommand {
     } 
 
 
+
+    /**
+     * Executes the save command.
+     *
+     * @param argms the command arguments
+     * @return 0 if successful, another value if validation fails
+     */
     @Override
     public int execute(String argms) {
         if(!validateNoArgument(argms, console)) {
             return 1; 
         }
-        workerRepository.save(workerRepository.getWorkers()); 
+        workerRepository.save(); 
         return 0; 
     }  
 

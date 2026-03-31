@@ -4,10 +4,16 @@ package workerapp.commands;
 import workerapp.cli.Console;
 import workerapp.repository.CommandRegistry;
 
+
+/**
+ * Command: HelpCommand
+ * Command description: Prints a list of all available commands and their descriptions.
+ */
 public class HelpCommand extends AbstractCommand {
 
     private final Console console; 
     private final CommandRegistry commandRegistry; 
+
 
     public HelpCommand(CommandRegistry commandManager, Console console){
         super("help", "Prints a list of all available commands and their descriptions");
@@ -17,6 +23,12 @@ public class HelpCommand extends AbstractCommand {
 
 
 
+    /**
+     * Executes the help command.
+     * 
+     * @param argument the command argument
+     * @return 0 if successful, another value if validation fails
+     */
     @Override
     public int execute(String argument) {
         

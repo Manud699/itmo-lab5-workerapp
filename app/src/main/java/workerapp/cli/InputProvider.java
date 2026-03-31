@@ -6,6 +6,9 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Scanner;
 
+/**
+ * InputProvider is responsible for managing input sources for the application. 
+ */
 public class InputProvider {
 
     private final Deque<Scanner> scanners;
@@ -17,7 +20,12 @@ public class InputProvider {
     }
 
 
-
+    /**
+     *  Connects to a file and adds it to the stack of scanners. 
+     * 
+     * @param file
+     * @throws FileNotFoundException
+     */
     public void connectToFile(File file) throws FileNotFoundException {
         Scanner fileScanner = new Scanner(file);
         scanners.push(fileScanner);
@@ -35,12 +43,21 @@ public class InputProvider {
 
 
 
+    /**
+     * Returns the current scanner, which is the one on top of the stack. 
+     * 
+     * @return Scanner  
+     */
     public Scanner getCurrentScanner() {
         return scanners.peek(); 
     }
 
 
 
+    /**
+     * Checks if the application is currently in interactive mode.
+     * @return true if in interactive mode, false otherwise
+     */
     public boolean isInteractiveMode() {
         return this.isInteractiveMode;
     }

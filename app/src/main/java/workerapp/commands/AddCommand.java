@@ -4,7 +4,10 @@ import workerapp.cli.Console;
 import workerapp.model.builders.WorkerMainBuilder;
 import workerapp.repository.WorkerRepository;
 
-
+/**
+ * Command: AddCommand
+ * Command description: Adds a new worker to the collection.
+ */
 public class AddCommand extends AbstractCommand {
 
     private final WorkerRepository workerRepository;
@@ -22,6 +25,12 @@ public class AddCommand extends AbstractCommand {
 
 
 
+    /**
+     * Executes the add command.
+     * 
+     * @param argms the command argument
+     * @return 0 if successful, another value if validation fails
+     */
     @Override
     public int execute(String argms) {
         if(!validateNoArgument(argms, console)) {

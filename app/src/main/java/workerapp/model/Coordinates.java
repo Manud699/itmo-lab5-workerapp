@@ -1,5 +1,9 @@
 package workerapp.model;
 
+/**
+ * class Coordinates 
+ * @author manu_d699
+ */
 public class Coordinates  {
 
     private float x;

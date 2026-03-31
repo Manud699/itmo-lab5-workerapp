@@ -4,7 +4,9 @@ import workerapp.cli.Console;
 import workerapp.cli.InputProvider;
 import workerapp.model.Coordinates;
 
-
+/*
+ * Builder for creating Coordinates {@link Coordinates}.
+ */
 public class CoordinatesBuilder extends AbstractConsoleBuilder<Coordinates> {
 
     private final float MIN_COORDINATE_X = -497;  
@@ -15,9 +17,11 @@ public class CoordinatesBuilder extends AbstractConsoleBuilder<Coordinates> {
     } 
 
 
+    /*
+     * @return the created Coordinates instance.
+     */
     @Override
     public Coordinates build() {
-
         return new Coordinates((float)askNumber("Coordenada X", "[must be greater than -497]", x -> x > MIN_COORDINATE_X && x!= null, Float::parseFloat), 
                                 askNumber("Coordenada Y","[must be greater than -497/It cannot be null]", y -> y > MIN_COORDINATE_Y && y != null, Double::parseDouble)); 
         }

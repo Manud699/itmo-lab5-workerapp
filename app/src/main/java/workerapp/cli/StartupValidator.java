@@ -1,5 +1,9 @@
 package workerapp.cli;
 
+/**
+ * Class: StartupValidator
+ * Description: Validates the startup arguments for the application.
+ */
 public class StartupValidator {
     
     private static final String DEFAULT_FILE = "workers_defecto.csv";

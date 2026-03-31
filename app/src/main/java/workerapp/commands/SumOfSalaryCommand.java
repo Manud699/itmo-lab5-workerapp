@@ -1,10 +1,13 @@
 package workerapp.commands;
 
-
-
 import workerapp.cli.Console;
 import workerapp.repository.WorkerRepository;
 
+
+/**
+ * Command: SumOfSalaryCommand
+ * Command description: Displays the sum of the salaries of all elements in the collection.
+ */
 public class SumOfSalaryCommand extends AbstractCommand {
     
 
@@ -20,7 +23,12 @@ public class SumOfSalaryCommand extends AbstractCommand {
     } 
 
 
-
+    /**
+     * Executes the sum_of_salary command.
+     * 
+     * @param argms the command arguments
+     * @return the exit code
+     */
     @Override
     public int execute(String argms) {
         if(!validateNoArgument(argms, console)) {

@@ -4,13 +4,15 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
-
 import workerapp.cli.Console;
 import workerapp.mappersCsv.WorkerToCsvLine;
 import workerapp.model.Worker;
 import workerapp.repository.WorkerRepository;
 
+/**
+ * Class SaveToCSV
+ * This class is responsible for saving the collection of Worker objects to a CSV file.
+ */
 public class SaveToCSV implements FormSave {
     
     private final File file;
@@ -27,6 +29,9 @@ public class SaveToCSV implements FormSave {
 
 
 
+    /**
+     * Saves the collection of Worker objects to the CSV file.
+     */
     @Override
     public void save(){
         if(!FileValidator.isValidForWrite(this.file, console)) return;
@@ -39,6 +44,11 @@ public class SaveToCSV implements FormSave {
 
 
 
+    /**
+     *      
+     * @param targetFile the file to create
+     * @return true if the file was created successfully or already exists, false otherwise
+     */
     public boolean createFile(File targetFile){
         try {
             if(!targetFile.createNewFile()) {
@@ -58,6 +68,10 @@ public class SaveToCSV implements FormSave {
 
 
 
+    /**
+     * Executes the save protocol for the specified file.
+     * @param file the file to save the workers to
+     */
     public void executeSaveProtocol(File file) {
     try {
         writeWorkersToFile(file);
@@ -71,6 +85,11 @@ public class SaveToCSV implements FormSave {
 
 
 
+    /**
+     * Writes the collection of Worker objects to the specified file in CSV format.
+     * @param file the file to write the workers to
+     * @throws IOException if an I/O error occurs while writing to the file
+     */
     public void writeWorkersToFile(File file) throws IOException{
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))){
             for(Worker worker : workers.getWorkers()){

@@ -1,6 +1,9 @@
 package workerapp.cli;
 
 
+/**
+ * StandardConsole is a concrete implementation of the Console interface that provides standard input and output operations using the system console.
+ */
 public  class StandardConsole implements Console  {
 
     
@@ -33,10 +36,13 @@ public  class StandardConsole implements Console  {
     @Override
     public void printError(Object message) {
     System.out.println("\u001B[31m" + message + "\u001B[0m"); 
-}
+    }
 
 
 
+    /**
+     * Prints the PS2. Means that the application is waiting for a continuation of a multi-line command.
+     */
     @Override
     public void ps2() {
         print(PS2);
@@ -44,16 +50,12 @@ public  class StandardConsole implements Console  {
     }
 
 
-
+    /**
+     * Prints the PS1. Means that the application is waiting for a new command.
+     */
     public void ps1() {
         print(PS1);
         System.out.flush();
     } 
-
-
-
-
-
-
 
 }

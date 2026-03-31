@@ -6,6 +6,10 @@ import workerapp.model.Worker;
 import workerapp.repository.WorkerRepository;
 
 
+/**
+ * Command: remove_head
+ * Description: Prints and removes the first element of the collection.
+ */
 public class RemoveHeadCommand extends AbstractCommand implements TableDisplayable {
     
 
@@ -21,7 +25,12 @@ public class RemoveHeadCommand extends AbstractCommand implements TableDisplayab
     } 
 
 
-
+    /**
+     * Executes the remove_head command.
+     * 
+     * @param argm the command arguments (should be empty)
+     * @return 0 if successful, 1 if validation fails or the collection is empty
+     */
     @Override
     public int execute(String argm) {
         if(!validateNoArgument(argm, console)) {

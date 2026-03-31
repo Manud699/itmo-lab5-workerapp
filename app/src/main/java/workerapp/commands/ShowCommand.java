@@ -1,16 +1,14 @@
 package workerapp.commands;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.stream.Collectors;
-
 import workerapp.cli.Console;
 import workerapp.cli.formatter.TableDisplayable;
-import workerapp.model.Worker;
 import workerapp.repository.WorkerRepository;
 
 
-
+/**
+ * Command: ShowCommand
+ * Command description: Displays all elements of the collection.
+ */
 public class ShowCommand extends AbstractCommand implements TableDisplayable {
 
     private WorkerRepository workerRepository; 
@@ -25,7 +23,12 @@ public class ShowCommand extends AbstractCommand implements TableDisplayable {
     } 
 
 
-
+    /**     
+     *  Executes the show command.
+     * 
+     * @param argument the command argument
+     * @return 0 if successful, 1 if validation fails or the collection is empty
+     */
     @Override
     public int execute(String argument) {
         if(!validateNoArgument(argument, console)){

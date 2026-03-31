@@ -1,7 +1,10 @@
 package workerapp.model;
 import java.time.ZonedDateTime;
 
-
+/**
+ * class Worker 
+ * @author manu_d699
+ */
 public class Worker implements Comparable<Worker> {
     
     private long id;
@@ -12,6 +15,7 @@ public class Worker implements Comparable<Worker> {
     private Position position; //Поле не может быть null
     private Status status; //Поле не может быть null
     private Organization organization; //Поле не может быть nul
+
 
 
     public Worker(long id, String name, Coordinates coordinates, ZonedDateTime creationDate, long salary, Position position, Status status, Organization organization) {
@@ -74,16 +78,17 @@ public class Worker implements Comparable<Worker> {
     } 
 
 
-    //setters
 
     public void setId(long id) {
         this.id = id; 
     } 
 
 
+
     public void setName(String name){
         this.name = name;
     }
+
 
 
     public void setCoordinates(Coordinates  coordinates){
@@ -139,7 +144,7 @@ public class Worker implements Comparable<Worker> {
     } 
 
 
-
+    
     @Override
     public String toString() {
         return "Worker{" +

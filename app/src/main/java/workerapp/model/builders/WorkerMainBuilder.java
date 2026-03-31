@@ -12,7 +12,9 @@ import java.time.ZonedDateTime;
 
 
 
-
+/*
+ * Builder for creating Worker {@link Worker}.
+ */
 public class WorkerMainBuilder extends AbstractConsoleBuilder<Worker> {
 
 
@@ -22,14 +24,14 @@ public class WorkerMainBuilder extends AbstractConsoleBuilder<Worker> {
 
     private final long MIN_SALARY = 0; 
 
-
     public WorkerMainBuilder(InputProvider inputProvider, Console console) {
         super(inputProvider, console);
     } 
 
-
-
-    @Override
+    /*
+     * Builds a new Worker instance{@link Worker}.
+     * @return the created Worker instance{@link Worker}.
+     */
     public Worker build() {
             return new Worker(
                             WorkerIdGenerator.generateID(), 

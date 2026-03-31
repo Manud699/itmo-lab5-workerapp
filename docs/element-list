@@ -1,0 +1,10 @@
+workerapp
+workerapp.cli
+workerapp.cli.formatter
+workerapp.commands
+workerapp.mappersCsv
+workerapp.model
+workerapp.model.builders
+workerapp.repository
+workerapp.repository.file
+workerapp.util

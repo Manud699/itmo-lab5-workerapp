@@ -6,6 +6,11 @@ import workerapp.cli.Console;
 import workerapp.repository.WorkerRepository;
 import workerapp.util.NumberParseSafe;
 
+
+/**
+ * Command: remove_by_id
+ * Description: Removes an element from the collection by its ID.
+ */
 public class RemoveByIdCommand extends AbstractCommand {
 
     private final WorkerRepository workerRepository;  
@@ -20,6 +25,11 @@ public class RemoveByIdCommand extends AbstractCommand {
 
 
 
+    /**
+     * Executes the remove_by_id command.
+     * @param argument the ID of the worker to remove
+     * @return 0 if successful, another value if validation fails or the collection is empty
+     */
     @Override 
     public int execute(String argument) {
         if(!validateHasArgument(argument, console)) {

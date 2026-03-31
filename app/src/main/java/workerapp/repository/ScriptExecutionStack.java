@@ -8,6 +8,10 @@ import java.util.Deque;
 import workerapp.cli.Console;
 import workerapp.cli.InputProvider;
 
+
+/**
+ * ScriptExecutionStack is responsible for managing the execution of scripts in the application.
+ */
 public class ScriptExecutionStack {
     
     private Deque<String> activeScripts; 
@@ -22,7 +26,12 @@ public class ScriptExecutionStack {
     }
 
 
-
+    /**
+     * Connects the script execution stack to a file scanner.
+     * 
+     * @param file the file to connect to
+     * @throws FileNotFoundException if the file is not found
+     */
     public void connectToFileScanner(File file) throws FileNotFoundException {
         String absolutePath = file.getAbsolutePath();
         activeScripts.push(absolutePath);       
@@ -31,12 +40,21 @@ public class ScriptExecutionStack {
 
 
 
+    /**
+     * Checks if a script is currently active.
+     * 
+     * @param absolutePath the absolute path of the script to check
+     * @return true if the script is active, false otherwise
+     */
     public boolean isActiveScript(String absolutePath){
         return activeScripts.contains(absolutePath);
     }
 
 
 
+    /**
+    * Exits the current script by popping it from the stack and disconnecting the file scanner.   
+    */
     public void exitCurrentScript() {
         if (!activeScripts.isEmpty()) {
             activeScripts.pop();

@@ -1,9 +1,11 @@
 package workerapp.cli;
 
-
 import java.util.Scanner;
-
 import workerapp.repository.CommandRegistry;
+
+/**
+ * ApplicationRunner is responsible for running the command-line interface of the application.
+ */
 public class ApplicationRunner {
 
     private final Console console;
@@ -76,6 +78,12 @@ public class ApplicationRunner {
 
 
 
+    /**
+     * Splits the input line into command name and argument.
+     * 
+     * @param inputLine The raw input line from the user.
+     * @return An array where the first element is the command name and the second element is the argument.
+     */
     public String[] spliterInputLine(String inputLine) {
         String[] spliter = inputLine.split("\\s+", 2);  
         String commandName = spliter[0]; 
@@ -85,6 +93,9 @@ public class ApplicationRunner {
 
 
 
+    /**
+     * Displays a summary of script execution, showing the number of successfully executed commands and failed commands.
+     */
     public void showScriptSummary() {
         System.lineSeparator();
         console.println("-------------------------------------------"); 

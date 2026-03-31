@@ -2,10 +2,23 @@ package workerapp.mappersCsv;
 
 import workerapp.model.Worker;
 
+
+/**
+ * class WorkerToCsvLine
+ * WorkerToCsvLine is responsible for converting a Worker object into a CSV line.
+ * @author manu_d699
+ */
 public class WorkerToCsvLine {
     
-    public static String toCsvLine(Worker worker) {           
-        
+
+
+    /**
+     * Converts a Worker object into a CSV line.
+     *      
+     * @param worker
+     * @return A CSV line representing the Worker object.
+     */
+    public static String toCsvLine(Worker worker) {               
         StringBuilder sb = new StringBuilder();
         sb.append(worker.getId()).append(",");
         sb.append(worker.getName()).append(",");

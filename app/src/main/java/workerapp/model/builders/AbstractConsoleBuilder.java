@@ -6,6 +6,11 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import workerapp.cli.*;
 
+/**
+ * AbstractConsoleBuilder is an abstract class that provides common methods for building objects through console input.
+ * It uses an InputProvider to get the current Scanner and a Console to interact with the user.
+ * Subclasses of AbstractConsoleBuilder will implement the build() method to create specific objects based on user input.
+ */
 public abstract class AbstractConsoleBuilder<T>  {
 
 
@@ -18,13 +23,16 @@ public abstract class AbstractConsoleBuilder<T>  {
     public AbstractConsoleBuilder(InputProvider inputProvider, Console console) {
         this.inputProvider = inputProvider;
         this.console = console; 
-
     }
 
     public abstract T build();
 
 
-
+    /**
+     * Checks if the scanner has a next line available.
+     * 
+     * @param scanner the scanner to check.
+     */
     public boolean isSafeNextLine(Scanner scanner) { 
         if(!scanner.hasNextLine()) {
             return false;
@@ -33,7 +41,14 @@ public abstract class AbstractConsoleBuilder<T>  {
     }
 
 
-
+    /**
+     * Asks the user to input a string value.
+     * 
+     * @param prompt the prompt for the user.
+     * @param restrictions the restrictions for the input.
+     * @param validator the validator for the input.
+     * @return the validated string value.
+     */
     public String askString(String prompt, String restrictions, Predicate<String> validator) {
         while(true) {
             scanner = inputProvider.getCurrentScanner();
@@ -59,6 +74,15 @@ public abstract class AbstractConsoleBuilder<T>  {
 
 
 
+    /**
+     * Asks the user to input a number value.
+     * 
+     * @param prompt the prompt for the user.
+     * @param restrictions the restrictions for the input.
+     * @param validator the validator for the input.
+     * @param parse the function to parse the input string to the desired number type.
+     * @return the validated number value.
+     */
     public <N> N askNumber(String prompt, String restrictions, Predicate<N> validator, Function<String, N> parse) {
         while (true) {
             scanner = inputProvider.getCurrentScanner();
@@ -94,6 +118,13 @@ public abstract class AbstractConsoleBuilder<T>  {
 
 
 
+    /**
+     * Asks the user to input an enum value.
+     * 
+     * @param prompt the prompt for the user.
+     * @param valoresAceptados the array of accepted enum values.
+     * @return the validated enum value.
+     */
     public <E extends Enum<E>> E askEnum(String prompt, E[] valoresAceptados) {
         while(true) {
             scanner = inputProvider.getCurrentScanner();

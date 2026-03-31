@@ -1,12 +1,15 @@
 package workerapp.commands;
 
-
-
 import workerapp.cli.Console;
 import workerapp.cli.formatter.TableDisplayable;
 import workerapp.model.Worker;
 import workerapp.repository.WorkerRepository;
 
+
+/**
+ * Command: head
+ * Description: Prints the first element of the collection.
+ */
 public class HeadCommand extends AbstractCommand implements TableDisplayable {
 
     private final WorkerRepository workerRepository;
@@ -22,9 +25,14 @@ public class HeadCommand extends AbstractCommand implements TableDisplayable {
 
 
 
+    /**
+     * Executes the head command.
+     * 
+     * @param args the command argument
+     * @return 0 if successful, another value if validation fail.
+     */
     @Override
     public int execute(String argms){
-
         if(!validateNoArgument(argms, console)) {
             return 1; 
         }

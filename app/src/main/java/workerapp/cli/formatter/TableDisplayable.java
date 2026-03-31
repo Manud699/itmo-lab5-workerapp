@@ -2,13 +2,17 @@ package workerapp.cli.formatter;
 
 import java.util.Locale;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
 import java.util.List;
 import workerapp.cli.Console;
 import workerapp.model.Worker;
 import workerapp.model.Coordinates;
 import workerapp.model.Organization;
 
+
+/**
+ * Interface TableDisplayable
+ * Provides default methods for displaying Worker objects in a formatted table in the console.
+ */
 public interface TableDisplayable {
 
     int MAX_NAME_LEN = 10;
@@ -38,6 +42,12 @@ public interface TableDisplayable {
 
 
 
+    /**
+     * Prints a list of Worker objects in a formatted table.
+     * 
+     * @param workers The list of Worker objects to display.
+     * @param console The Console object used for printing the table.
+     */
     default void printWorkerTable(List<Worker> workers, Console console) {
         if (workers == null || workers.isEmpty()) {
             console.printError("No workers to display.");
@@ -55,6 +65,12 @@ public interface TableDisplayable {
 
 
 
+    /**
+     * Overloaded method to print a single Worker object in a formatted table.
+     *  
+     * @param worker The Worker object to display.
+     * @param console The Console object used for printing the table.
+     */
     default void printWorkerTable(Worker worker, Console console) {
         if (worker == null) {
             console.printError("Worker is null.");
@@ -65,7 +81,12 @@ public interface TableDisplayable {
 
 
 
-
+    /**
+     * Formats a Worker object into a string that represents a row in the table.
+     * 
+     * @param  worker  The worker object to format.
+     * @return A formatted string representing the Worker object.
+    */
     default String formatWorkerRow(Worker worker) {
         String safeName = worker.getName();
         if (safeName.length() > MAX_NAME_LEN) {

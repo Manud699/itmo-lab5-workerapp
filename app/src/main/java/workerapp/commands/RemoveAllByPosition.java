@@ -4,6 +4,11 @@ import workerapp.cli.Console;
 import workerapp.model.Position;
 import workerapp.repository.WorkerRepository;
 
+
+/**
+ * Command: remove_all_by_position
+ * Description: Removes all elements from the collection whose position field is equivalent to the specified one.
+ */
 public class RemoveAllByPosition extends AbstractCommand  {
     
     private final WorkerRepository workerRepository; 
@@ -18,7 +23,12 @@ public class RemoveAllByPosition extends AbstractCommand  {
     }
 
 
-
+    /**
+     * Executes the remove_all_by_position command.
+     * 
+     * @param argm the command arguments
+     * @return 0 if successful, another value if validation fails
+     */
     @Override
     public int execute(String argm){
         if(!validateHasArgument(argm, console)){
@@ -47,6 +57,12 @@ public class RemoveAllByPosition extends AbstractCommand  {
 
 
 
+    /**
+     * Converts a string to a Position enum value.
+     * 
+     * @param argm the string to convert
+     * @return the corresponding Position enum value, or null if invalid
+     */
     public Position convertToStatusEnum(String argm) {
         try {
             return Position.valueOf(argm.trim().toUpperCase()); 

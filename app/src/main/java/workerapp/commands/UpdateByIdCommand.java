@@ -1,13 +1,16 @@
 package workerapp.commands;
 
 import java.util.Optional;
-
 import workerapp.cli.Console;
 import workerapp.model.Worker;
 import workerapp.model.builders.WorkerMainBuilder;
 import workerapp.repository.WorkerRepository;
 import workerapp.util.NumberParseSafe;
 
+/**
+ * Command: UpdateByIdCommand
+ * Command description: Updates a worker by ID.
+ */
 public class UpdateByIdCommand extends AbstractCommand {
 
     private final WorkerRepository workerRepository;
@@ -24,6 +27,12 @@ public class UpdateByIdCommand extends AbstractCommand {
 
 
 
+    /**
+     * Executes the update_by_id command.
+     * 
+     * @param argms the command arguments
+     * @return 0 if successful, another value if validation fails
+     */
     @Override
     public int execute(String argms) {
         if(!validateHasArgument(argms, console)) {

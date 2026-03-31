@@ -15,6 +15,10 @@ import workerapp.repository.file.FormSave;
 import workerapp.repository.file.LoadFromCSV;
 import workerapp.repository.file.SaveToCSV;
 
+
+/**
+ * SystemBootstrapper is responsible for initializing the application components and building the main application runner.
+ */
 public class SystemBootstrapper {
 
     private InputProvider inputProvider; 
@@ -36,7 +40,11 @@ public class SystemBootstrapper {
     }
 
 
-
+    /**
+     * Builds the main application runner.
+     * 
+     * @return the initialized ApplicationRunner
+     */
     public ApplicationRunner buildApplicationRunner() {
         initInfrastructure();
         initRepositories();
@@ -48,7 +56,7 @@ public class SystemBootstrapper {
     }
 
 
-
+    
     public void initInfrastructure() {  
         this.inputProvider = new InputProvider(); 
         this.console = new StandardConsole(); 

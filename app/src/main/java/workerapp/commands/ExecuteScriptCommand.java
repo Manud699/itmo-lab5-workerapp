@@ -2,12 +2,14 @@ package workerapp.commands;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-
 import workerapp.cli.Console;
 import workerapp.repository.CommandRegistry;
 import workerapp.repository.ScriptExecutionStack;
 
-
+/**
+ * Command: ExecuteScriptCommand
+ * Command description: Reads and executes the script from the specified file.
+ */
 public class ExecuteScriptCommand extends AbstractCommand {
 
     private final Console console; 
@@ -19,30 +21,32 @@ public class ExecuteScriptCommand extends AbstractCommand {
         this.scriptExecutionStack = scriptExecutionStack; 
     } 
 
+
+
+    /**
+     * Executes the execute_script command.
+     * 
+     * @param argument the command argument
+     * @return 0 if successful, another value if validation fails
+     */
     @Override
     public int execute(String argument) {
         if (!validateHasArgument(argument, console)) {
             return 1; 
         }
-
         File fileScript = new File(argument);
-        
         if (!fileScript.exists()) {
             console.printError("Error: The specified file does not exist: " + fileScript.getName());
             return 2; 
         }
-        
         if (!fileScript.canRead()) {
             console.printError("Error: Cannot read the file (permission denied): " + fileScript.getName());
             return 3; 
         }
-        
-
         if (scriptExecutionStack.isActiveScript(fileScript.getAbsolutePath())) {
             console.printError("Error: Infinite recursion detected. The script is already running: " + fileScript.getName());
             return 4; 
         } 
-
         try {
             scriptExecutionStack.connectToFileScanner(fileScript);
             return 0; 

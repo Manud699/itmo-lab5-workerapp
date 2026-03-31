@@ -1,5 +1,10 @@
 package workerapp.model;
 
+
+/**
+ * class Organization 
+ * @author manu_d699
+ */
 public class Organization {
 
     private final String fullName; //Длина строки не должна быть больше 694, Поле не может быть null
