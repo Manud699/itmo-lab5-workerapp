@@ -32,6 +32,7 @@ public abstract class AbstractConsoleBuilder<T>  {
      * Checks if the scanner has a next line available.
      * 
      * @param scanner the scanner to check.
+     * @return true if there is a next line, false otherwise.
      */
     public boolean isSafeNextLine(Scanner scanner) { 
         if(!scanner.hasNextLine()) {
@@ -57,7 +58,7 @@ public abstract class AbstractConsoleBuilder<T>  {
                 console.print("Enter " + prompt + " " + restrictions + ":" );
             }
             if(!isSafeNextLine(scanner)){
-                console.println("Terminando programa");
+                console.println("Exiting program...");
                 System.exit(0);
             }
             String inputLine = scanner.nextLine();
@@ -91,7 +92,7 @@ public abstract class AbstractConsoleBuilder<T>  {
                 console.print("Enter " + prompt + " " + restrictions + ":" );
             }
             if(!isSafeNextLine(scanner)){
-                console.println("Terminando programa");
+                console.println("Exiting program...");
                 System.exit(0);
             }
             String inputLine = scanner.nextLine();
@@ -134,7 +135,7 @@ public abstract class AbstractConsoleBuilder<T>  {
                 console.print("Available options " + Arrays.toString(valoresAceptados) +":" );
             }
             if(!isSafeNextLine(scanner)){
-                console.println("Terminando programa");
+                console.println("Exiting program...");
                 System.exit(0);
             }
             String inputLine = scanner.nextLine();

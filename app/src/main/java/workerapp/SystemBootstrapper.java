@@ -16,6 +16,7 @@ import workerapp.repository.file.LoadFromCSV;
 import workerapp.repository.file.SaveToCSV;
 
 
+
 /**
  * SystemBootstrapper is responsible for initializing the application components and building the main application runner.
  */
@@ -74,9 +75,10 @@ public class SystemBootstrapper {
 
     public void initFileStructure(){
         String file = StartupValidator.getValidFileName(argumentsFromMain, console);
-        File dataBaseFile = new File(file);
-        this.formLoad = new LoadFromCSV(dataBaseFile, console, this.workerRepository);
-        this.formSave = new SaveToCSV(dataBaseFile, console, this.workerRepository);
+        File targetSaveFile= new File(file);
+        File targetLoadFile = workerapp.util.FindFile.findFile(new File(file));
+        this.formLoad = new LoadFromCSV(targetLoadFile, console, this.workerRepository);
+        this.formSave = new SaveToCSV(targetSaveFile, console, this.workerRepository);
         this.workerRepository.setFormLoad(this.formLoad);
         this.workerRepository.setFormSave(this.formSave);
     }

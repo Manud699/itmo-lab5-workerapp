@@ -11,7 +11,6 @@ import workerapp.cli.Console;
 public class FileValidator {
 
 
-
     /**
      * Validates if the given file is suitable for reading.
      * Checks if the file exists, is not a directory, and has read permissions.
@@ -51,14 +50,10 @@ public class FileValidator {
             console.printError("Error: Path is a directory. Cannot save.");
             return false;
         }
-        if (!file.exists()) {
-            console.printError("Target file does not exist '" + file+"'");
-            return false; 
-        }
-        if (!file.canWrite()) {
-            console.printError("Error: No write permissions for: '" + file.getAbsolutePath() + "'. Cannot save.");
-            return false;
-        }
+        if (file.exists() && !file.canWrite()) {
+        console.printError("Error: No write permissions for: '" + file.getAbsolutePath() + "'. Cannot save.");
+        return false;
+    }
         return true;
     }
 }

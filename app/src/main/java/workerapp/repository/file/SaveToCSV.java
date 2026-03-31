@@ -19,15 +19,11 @@ public class SaveToCSV implements FormSave {
     private final Console console; 
     private final WorkerRepository workers;
 
-
-
     public SaveToCSV(File file, Console console, WorkerRepository workers) {
         this.file = file;
         this.console = console;
         this.workers = workers; 
     }       
-
-
 
     /**
      * Saves the collection of Worker objects to the CSV file.
@@ -42,31 +38,30 @@ public class SaveToCSV implements FormSave {
         executeSaveProtocol(this.file);
     }
 
-
-
     /**
-     *      
      * @param targetFile the file to create
      * @return true if the file was created successfully or already exists, false otherwise
      */
     public boolean createFile(File targetFile){
         try {
+            File parentDirectory = targetFile.getParentFile();
+            if(parentDirectory != null && !parentDirectory.exists()){
+                parentDirectory.mkdirs(); 
+            } 
             if(!targetFile.createNewFile()) {
-                console.println("File already exists.");
+                console.println("File already exists at: " + targetFile.getAbsolutePath());
                 return true; 
             }  
-            console.println("Notice: Created save file at:" + targetFile.getName() );
+            console.println("Notice: Created save file at: " + targetFile.getAbsolutePath());
             return true;
         } catch (IOException e) {
-            console.printError("Failed to create file: " + e.getMessage());
+            console.printError("Failed to create file at '" + targetFile.getAbsolutePath() + "': " + e.getMessage());
             return false;
         } catch (Exception e) {
-            console.printError("Unexpected error while attempting to save.");
+            console.printError("Unexpected error while attempting to save at '" + targetFile.getAbsolutePath() + "'.");
             return false; 
         } 
     } 
-
-
 
     /**
      * Executes the save protocol for the specified file.
@@ -75,15 +70,14 @@ public class SaveToCSV implements FormSave {
     public void executeSaveProtocol(File file) {
     try {
         writeWorkersToFile(file);
-        console.println("Workers successfully saved to file:" + file.getName());
+        // <-- CAMBIADO a getAbsolutePath()
+        console.println("Workers successfully saved to file: " + file.getAbsolutePath());
     } catch (IOException e) {
-        console.printError("I/O error while saving: " + e.getMessage());
+        console.printError("I/O error while saving to '" + file.getAbsolutePath() + "': " + e.getMessage());
     } catch(Exception e) {
-        console.printError("An unexpected error occurred.");
+        console.printError("An unexpected error occurred while saving.");
         } 
     }  
-
-
 
     /**
      * Writes the collection of Worker objects to the specified file in CSV format.
@@ -99,5 +93,4 @@ public class SaveToCSV implements FormSave {
             }
         }
     }
-
 }

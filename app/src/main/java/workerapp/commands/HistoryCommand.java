@@ -36,6 +36,7 @@ public class HistoryCommand extends AbstractCommand {
         }
         console.println("----------------- Command History -----------------");
         commandRegistry.getHistoryCommands().stream().forEach(console::println);
+        console.println("---------------------------------------------------");
         return 0;
     }
 

@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import workerapp.cli.Console;
 import workerapp.repository.CommandRegistry;
 import workerapp.repository.ScriptExecutionStack;
+import workerapp.util.FindFile;
 
 /**
  * Command: ExecuteScriptCommand
@@ -21,8 +22,6 @@ public class ExecuteScriptCommand extends AbstractCommand {
         this.scriptExecutionStack = scriptExecutionStack; 
     } 
 
-
-
     /**
      * Executes the execute_script command.
      * 
@@ -34,24 +33,36 @@ public class ExecuteScriptCommand extends AbstractCommand {
         if (!validateHasArgument(argument, console)) {
             return 1; 
         }
-        File fileScript = new File(argument);
+        String scriptPath = argument.trim();
+        File fileScript = new File(scriptPath);
+
+        if (!fileScript.exists() && !scriptPath.contains("/") && !scriptPath.contains("\\")) {
+            fileScript = new File("workerDataApp/" + scriptPath);
+        }
+
+        fileScript = FindFile.findFile(fileScript);
+
         if (!fileScript.exists()) {
-            console.printError("Error: The specified file does not exist: " + fileScript.getName());
+            console.printError("Error: The specified script does not exist at: " + fileScript.getAbsolutePath());
             return 2; 
         }
+
         if (!fileScript.canRead()) {
-            console.printError("Error: Cannot read the file (permission denied): " + fileScript.getName());
+            console.printError("Error: Cannot read the script (permission denied) at: " + fileScript.getAbsolutePath());
             return 3; 
         }
+
         if (scriptExecutionStack.isActiveScript(fileScript.getAbsolutePath())) {
-            console.printError("Error: Infinite recursion detected. The script is already running: " + fileScript.getName());
+            console.printError("Error: Infinite recursion detected. The script is already running: " + fileScript.getAbsolutePath());
             return 4; 
         } 
+
         try {
             scriptExecutionStack.connectToFileScanner(fileScript);
+            console.println("Executing script from: " + fileScript.getAbsolutePath() + "...");
             return 0; 
         } catch (FileNotFoundException e) {
-            console.printError("Error: Could not open the file. " + e.getMessage());
+            console.printError("Error: Could not open the script file. " + e.getMessage());
             return 5;
         }
     } 

@@ -2,6 +2,12 @@
 .gradle
 build
 
+bin/
+
+docs/
+
+data/*.csv
+
 .idea/
 *.iml
 *.iws
