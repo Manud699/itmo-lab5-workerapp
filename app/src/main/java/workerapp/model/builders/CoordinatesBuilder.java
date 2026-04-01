@@ -4,7 +4,7 @@ import workerapp.cli.Console;
 import workerapp.cli.InputProvider;
 import workerapp.model.Coordinates;
 
-/*
+/**
  * Builder for creating Coordinates {@link Coordinates}.
  */
 public class CoordinatesBuilder extends AbstractConsoleBuilder<Coordinates> {
@@ -17,7 +17,7 @@ public class CoordinatesBuilder extends AbstractConsoleBuilder<Coordinates> {
     } 
 
 
-    /*
+    /**
      * @return the created Coordinates instance.
      */
     @Override

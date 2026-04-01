@@ -36,6 +36,7 @@ public class SystemBootstrapper {
 
 
 
+
     public SystemBootstrapper(String[] argumentsFromMain){
         this.argumentsFromMain = argumentsFromMain; 
     }
@@ -53,7 +54,7 @@ public class SystemBootstrapper {
         initBuildersMainObject();
         initCommands();
         loadData();
-        return new ApplicationRunner(console, inputProvider, commandRegistry); 
+        return new ApplicationRunner(console, inputProvider, commandRegistry, scriptExecutionStack); 
     }
 
 
@@ -61,6 +62,7 @@ public class SystemBootstrapper {
     public void initInfrastructure() {  
         this.inputProvider = new InputProvider(); 
         this.console = new StandardConsole(); 
+
     }
 
 

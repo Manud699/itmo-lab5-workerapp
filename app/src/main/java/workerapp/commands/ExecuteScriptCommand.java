@@ -64,6 +64,9 @@ public class ExecuteScriptCommand extends AbstractCommand {
         } catch (FileNotFoundException e) {
             console.printError("Error: Could not open the script file. " + e.getMessage());
             return 5;
+        } catch (Exception e) {
+            console.printError("An unexpected error occurred while executing the script: " + e.getMessage());
+            return 6;
         }
     } 
 }

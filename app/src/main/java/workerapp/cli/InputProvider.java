@@ -37,7 +37,7 @@ public class InputProvider {
     public void disconnectCurrentFile() {
         if (scanners.size() > 1) {
             scanners.pop().close();
-            this.isInteractiveMode = true; 
+            this.isInteractiveMode = (scanners .size() == 1); 
         }
     }
 

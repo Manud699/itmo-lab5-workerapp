@@ -2,6 +2,7 @@ package workerapp.cli;
 
 import java.util.Scanner;
 import workerapp.repository.CommandRegistry;
+import workerapp.repository.ScriptExecutionStack;
 
 /**
  * ApplicationRunner is responsible for running the command-line interface of the application.
@@ -12,17 +13,19 @@ public class ApplicationRunner {
     private final InputProvider inputProvider;
     private final CommandRegistry commandRegistry;
     private final boolean isRunning;  
+    private final ScriptExecutionStack scriptExecutionStack;
     private Scanner scanner; 
 
     private int successfulCommands = 0;
     private int failedCommands = 0;
 
 
-    public ApplicationRunner(Console console, InputProvider inputProvider, CommandRegistry commandRegistry) {
+    public ApplicationRunner(Console console, InputProvider inputProvider, CommandRegistry commandRegistry, ScriptExecutionStack scriptExecutionStack) {
         this.console = console;
         this.inputProvider = inputProvider;
         this.commandRegistry = commandRegistry;
         this.isRunning = true;
+        this.scriptExecutionStack = scriptExecutionStack;
     }   
 
 
@@ -37,7 +40,7 @@ public class ApplicationRunner {
             if(!scanner.hasNextLine()) {
                 if(!inputProvider.isInteractiveMode()) {
                     showScriptSummary();
-                    inputProvider.disconnectCurrentFile();
+                    scriptExecutionStack.exitCurrentScript();
                     continue; 
                 } else {
                     break; 
@@ -68,7 +71,7 @@ public class ApplicationRunner {
             } catch (IllegalArgumentException e) {
                 if (!inputProvider.isInteractiveMode()) {
                     console.printError("Script execution aborted. " + e.getMessage());
-                    inputProvider.disconnectCurrentFile();    
+                    scriptExecutionStack.exitCurrentScript();  
                 } else {
                     console.printError(e.getMessage());
                 }
@@ -98,7 +101,7 @@ public class ApplicationRunner {
      */
     public void showScriptSummary() {
         System.lineSeparator();
-        console.println("-------------------------------------------"); 
+        console.println("---------------------------------------------------"); 
         console.println("Script Execution Summary");
         console.println("Successfully executed: " + successfulCommands);
         console.println("Failed commands: " + failedCommands);

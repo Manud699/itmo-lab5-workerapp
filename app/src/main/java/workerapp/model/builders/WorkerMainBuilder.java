@@ -12,7 +12,7 @@ import java.time.ZonedDateTime;
 
 
 
-/*
+/**
  * Builder for creating Worker {@link Worker}.
  */
 public class WorkerMainBuilder extends AbstractConsoleBuilder<Worker> {
@@ -28,7 +28,7 @@ public class WorkerMainBuilder extends AbstractConsoleBuilder<Worker> {
         super(inputProvider, console);
     } 
 
-    /*
+    /**
      * Builds a new Worker instance{@link Worker}.
      * @return the created Worker instance{@link Worker}.
      */

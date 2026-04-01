@@ -142,21 +142,4 @@ public class Worker implements Comparable<Worker> {
     public int hashCode() {
         return java.util.Objects.hashCode(id);
     } 
-
-
-    
-    @Override
-    public String toString() {
-        return "Worker{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", coordinates=" + coordinates +
-                ", creationDate=" + creationDate +
-                ", salary=" + salary +
-                ", position=" + position +
-                ", status=" + status +
-                ", organization=" + organization +
-                '}';
-    }
-
 }

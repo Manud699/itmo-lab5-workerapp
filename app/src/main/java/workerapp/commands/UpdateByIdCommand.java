@@ -48,7 +48,6 @@ public class UpdateByIdCommand extends AbstractCommand {
         long workerId = parsingId.get();
         if(workerRepository.isWorkerId(workerId)) {
             Worker workerToUpdate = workerRepository.getWorkerMap().get(workerId);
-            console.println("Updating worker with ID " + workerId + "...");
             Worker newWorker = workerBuilder.build();
             workerToUpdate.setName(newWorker.getName());
             workerToUpdate.setCoordinates(newWorker.getCoordinates());
@@ -61,7 +60,4 @@ public class UpdateByIdCommand extends AbstractCommand {
         console.printError("Worker ID not found in the collection '" + argms+"'" );
         return 1; 
     } 
-
-
-
 }
