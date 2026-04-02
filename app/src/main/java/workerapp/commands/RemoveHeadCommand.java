@@ -17,7 +17,11 @@ public class RemoveHeadCommand extends AbstractCommand implements TableDisplayab
     private final WorkerRepository workerRepository; 
 
 
-
+    /**
+     * Constructor for the RemoveHeadCommand class.
+     * @param workerRepository the repository for managing workers
+     * @param console the console for input/output operations
+     */
     public RemoveHeadCommand(WorkerRepository workerRepository, Console console) {
         super("remove_head", "Prints and removes the first element of the collection");
         this.workerRepository = workerRepository; 

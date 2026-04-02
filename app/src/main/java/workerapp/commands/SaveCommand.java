@@ -14,6 +14,11 @@ public class SaveCommand extends AbstractCommand {
     private final WorkerRepository workerRepository; 
 
 
+    /**
+     * Constructor for the SaveCommand class.
+     * @param console the console for input/output operations
+     * @param workerRepository the repository for managing workers
+     */
     public SaveCommand(Console console, WorkerRepository workerRepository) {
         super("save", "Writes the collection data to the storage file");
         this.console = console;

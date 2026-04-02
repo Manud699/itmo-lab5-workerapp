@@ -14,6 +14,9 @@ public class InputProvider {
     private final Deque<Scanner> scanners;
     private boolean isInteractiveMode = true; 
 
+    /**
+     * Initializes the InputProvider with a Scanner for System.in and sets the mode to interactive.
+     */
     public InputProvider() {
         this.scanners = new ArrayDeque<>();
         this.scanners.push(new Scanner(System.in)); 
@@ -33,7 +36,9 @@ public class InputProvider {
     }
 
 
-
+    /**
+     * Disconnects the current file scanner and removes it from the stack.
+     */
     public void disconnectCurrentFile() {
         if (scanners.size() > 1) {
             scanners.pop().close();

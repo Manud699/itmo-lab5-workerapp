@@ -12,6 +12,12 @@ public class CoordinatesBuilder extends AbstractConsoleBuilder<Coordinates> {
     private final float MIN_COORDINATE_X = -497;  
     private final double MIN_COORDINATE_Y = -764;
 
+
+    /**
+     * Constructor for the CoordinatesBuilder class.
+     * @param inputProvider the input provider for managing input sources
+     * @param console the console for input/output operations
+     */
     public CoordinatesBuilder(InputProvider inputProvider, Console console){
         super(inputProvider ,console); 
     } 

@@ -36,7 +36,10 @@ public class SystemBootstrapper {
 
 
 
-
+    /**
+     *  
+     * @param argumentsFromMain the command-line arguments passed from the main method, used for determining the file to load/save data.
+     */
     public SystemBootstrapper(String[] argumentsFromMain){
         this.argumentsFromMain = argumentsFromMain; 
     }
@@ -58,7 +61,9 @@ public class SystemBootstrapper {
     }
 
 
-    
+    /**
+     * Initializes the infrastructure components.
+     */
     public void initInfrastructure() {  
         this.inputProvider = new InputProvider(); 
         this.console = new StandardConsole(); 
@@ -66,7 +71,9 @@ public class SystemBootstrapper {
     }
 
 
-
+    /**
+     * Initializes the repositories for managing application data and commands.
+     */
     public void initRepositories() {
         this.workerRepository = new WorkerRepository(); 
         this.commandRegistry = new CommandRegistry(console);
@@ -74,7 +81,9 @@ public class SystemBootstrapper {
     } 
 
 
-
+    /**
+     * Initializes the file structure for loading and saving worker data, based on the command-line arguments provided at startup.
+     */
     public void initFileStructure(){
         String file = StartupValidator.getValidFileName(argumentsFromMain, console);
         File targetSaveFile= new File(file);
@@ -86,7 +95,9 @@ public class SystemBootstrapper {
     }
 
 
-
+    /**
+     * Initializes the main builders for creating application objects.
+     */
     public void initBuildersMainObject() {
         this.coordinatesBuild = new CoordinatesBuilder(inputProvider, console);
         this.organizationBuild = new OrganizationBuilder(inputProvider, console);
@@ -96,7 +107,9 @@ public class SystemBootstrapper {
     }
 
 
-
+    /**
+     * Initializes the commands available in the application and registers them in the command registry.
+     */
     public void initCommands() {   
         commandRegistry.addCommand(new AddCommand(workerRepository, console, workerBuilder));
         commandRegistry.addCommand(new ShowCommand(workerRepository, console));
@@ -117,7 +130,9 @@ public class SystemBootstrapper {
     }
 
 
-
+    /**
+     * Loads the worker data from the file specified at startup, using the formLoad component of the worker repository.
+     */
     public void loadData() {
         workerRepository.load();
     }

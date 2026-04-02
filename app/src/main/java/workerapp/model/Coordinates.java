@@ -10,6 +10,11 @@ public class Coordinates  {
     private Double y;
 
     
+    /**
+     * Constructor for the Coordinates class.
+     * @param x 
+     * @param y
+     */
     public Coordinates(float x, Double y) {
         this.x = x; 
         this.y = y;

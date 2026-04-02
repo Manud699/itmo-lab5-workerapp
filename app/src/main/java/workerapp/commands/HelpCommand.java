@@ -15,6 +15,11 @@ public class HelpCommand extends AbstractCommand {
     private final CommandRegistry commandRegistry; 
 
 
+    /**
+     * Constructor for the HelpCommand class.
+     * @param commandManager the registry for managing commands
+     * @param console the console for input/output operations
+     */
     public HelpCommand(CommandRegistry commandManager, Console console){
         super("help", "Prints a list of all available commands and their descriptions");
         this.commandRegistry = commandManager; 

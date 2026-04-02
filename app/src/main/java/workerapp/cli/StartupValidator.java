@@ -8,6 +8,12 @@ public class StartupValidator {
     
     private static final String DEFAULT_FILE = "workerDataApp/workers_by_default.csv";
 
+    /**
+     * Validates the startup arguments and returns a valid file name for loading the database. 
+     * @param args the startup arguments
+     * @param console the console for printing messages
+     * @return
+     */
     public static String getValidFileName(String[] args, Console console) {
         if (args == null || args.length == 0 || args[0].trim().isEmpty()) {
             console.println(" Warning: No file specified in startup arguments.");

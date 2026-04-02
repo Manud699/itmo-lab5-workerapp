@@ -11,14 +11,20 @@ public  class StandardConsole implements Console  {
     private final String PS2 = "> ";  
 
 
-
+    /**
+     * Prints the specified object to the console.
+     * @param object the object to print
+     */
     @Override
     public  void print(Object object) {
         System.out.print(object);
     } 
 
 
-
+    /**
+     * Prints the specified object to the console followed by a newline.
+     * @param object the object to print
+     */
     @Override
     public void println(Object object) {
         System.out.println(object);
@@ -26,13 +32,19 @@ public  class StandardConsole implements Console  {
     }
 
 
-
+    /**
+     * Prints a table row with the specified left and right elements.
+     * @param elementleft the left element
+     * @param elementRight the right element
+     */
     @Override
     public void printTable(Object elementleft, Object elementRight) {
         System.out.printf(" %-32s%-1s%n", elementleft, elementRight);
     }
 
-
+    /**
+     * Prints an error message to the console in red color.
+     */
     @Override
     public void printError(Object message) {
     System.out.println("\u001B[31m" + message + "\u001B[0m"); 

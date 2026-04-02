@@ -19,7 +19,11 @@ public abstract class AbstractConsoleBuilder<T>  {
     private final Console console;
     
 
-
+    /**
+     * Constructor for the AbstractConsoleBuilder class.
+     * @param inputProvider the input provider for managing input sources
+     * @param console the console for input/output operations
+     */
     public AbstractConsoleBuilder(InputProvider inputProvider, Console console) {
         this.inputProvider = inputProvider;
         this.console = console; 

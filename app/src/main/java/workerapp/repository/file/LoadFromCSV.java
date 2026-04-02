@@ -20,7 +20,12 @@ public class LoadFromCSV implements FormLoad {
     private final WorkerRepository workerRepository; 
 
 
-
+    /**
+     * Constructor for LoadFromCSV.
+     * @param file the CSV file to load data from
+     * @param console the console for outputting messages and errors during the loading process
+     * @param workerRepository the repository to load the Worker data into
+     */
     public LoadFromCSV(File file, Console console, WorkerRepository workerRepository) {
         this.file = file;
         this.console = console;
@@ -28,7 +33,9 @@ public class LoadFromCSV implements FormLoad {
     }
 
 
-
+    /**
+     * Loads the worker data from the CSV file into the WorkerRepository, with validation and error handling for file access and data parsing issues.
+     */
     @Override
     public void load() {
         if (!FileValidator.isValidForRead(file, console)) {

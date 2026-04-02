@@ -55,14 +55,18 @@ public abstract class  AbstractCommand implements Command {
     }
 
 
-
+    /**
+     * @return the name of the command
+     */
     @Override
     public String getName() {
         return nameCommand; 
     } 
 
 
-
+    /**
+     * @return the description of the command
+     */
     @Override
     public String getDescription(){
         return description; 

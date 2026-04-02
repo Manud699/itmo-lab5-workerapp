@@ -15,7 +15,11 @@ public class ShowCommand extends AbstractCommand implements TableDisplayable {
     private final Console console;  
 
 
-
+    /**
+     * Constructor for the ShowCommand class.
+     * @param workerRepository the repository for managing workers
+     * @param console the console for input/output operations
+     */
     public ShowCommand(WorkerRepository workerRepository, Console console) {
         super("show", "Displays all elements of the collection");
         this.workerRepository = workerRepository;

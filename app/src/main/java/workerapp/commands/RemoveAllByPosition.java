@@ -15,7 +15,11 @@ public class RemoveAllByPosition extends AbstractCommand  {
     private final Console console;
 
 
-
+    /**
+     * Constructor for the RemoveAllByPosition class.
+     * @param workerRepository the repository for managing workers
+     * @param console the console for input/output operations
+     */
     public RemoveAllByPosition(WorkerRepository workerRepository, Console console) {
         super("remove_all_by_position", "Removes all elements from the collection whose position field is equivalent to the specified one");
         this.workerRepository = workerRepository; 

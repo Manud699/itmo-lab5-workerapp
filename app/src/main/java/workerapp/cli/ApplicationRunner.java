@@ -20,6 +20,13 @@ public class ApplicationRunner {
     private int failedCommands = 0;
 
 
+    /**
+     * Initializes the ApplicationRunner with the specified dependencies.
+     * @param console the console for input/output operations
+     * @param inputProvider the input provider for managing input sources
+     * @param commandRegistry the registry for managing commands
+     * @param scriptExecutionStack the stack for managing script execution
+     */
     public ApplicationRunner(Console console, InputProvider inputProvider, CommandRegistry commandRegistry, ScriptExecutionStack scriptExecutionStack) {
         this.console = console;
         this.inputProvider = inputProvider;
@@ -29,7 +36,9 @@ public class ApplicationRunner {
     }   
 
 
-
+    /**
+     * Starts the application runner, continuously reading user input and executing commands until the program is terminated.
+     */
     public void start() {
         console.println("Your welcome to AppWorker. Enter 'help' for more information");
         while (isRunning) {
@@ -39,8 +48,10 @@ public class ApplicationRunner {
             }
             if(!scanner.hasNextLine()) {
                 if(!inputProvider.isInteractiveMode()) {
-                    showScriptSummary();
                     scriptExecutionStack.exitCurrentScript();
+                    if (inputProvider.isInteractiveMode()) {
+                        showScriptSummary();
+                    }
                     continue; 
                 } else {
                     break; 
@@ -71,7 +82,10 @@ public class ApplicationRunner {
             } catch (IllegalArgumentException e) {
                 if (!inputProvider.isInteractiveMode()) {
                     console.printError("Script execution aborted. " + e.getMessage());
-                    scriptExecutionStack.exitCurrentScript();  
+                    scriptExecutionStack.exitCurrentScript();
+                    if (inputProvider.isInteractiveMode()) {
+                        showScriptSummary();
+                    }
                 } else {
                     console.printError(e.getMessage());
                 }

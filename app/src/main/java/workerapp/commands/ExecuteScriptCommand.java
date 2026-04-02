@@ -16,6 +16,12 @@ public class ExecuteScriptCommand extends AbstractCommand {
     private final Console console; 
     private final ScriptExecutionStack scriptExecutionStack; 
 
+    /**
+     * Constructor for the ExecuteScriptCommand class.
+     * @param commandRegistry the registry for managing commands
+     * @param console the console for input/output operations
+     * @param scriptExecutionStack the stack for managing script execution
+     */
     public ExecuteScriptCommand(CommandRegistry commandRegistry, Console console, ScriptExecutionStack scriptExecutionStack) {
         super("execute_script", "Reads and executes the script from the specified file"); 
         this.console = console; 

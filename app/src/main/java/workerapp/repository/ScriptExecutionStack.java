@@ -19,7 +19,11 @@ public class ScriptExecutionStack {
     private final InputProvider inputProvider; 
     
 
-
+    /**
+     * Constructor for the ScriptExecutionStack class.
+     * @param inputProvider the input provider for handling file input
+     * @param console the console for input/output operations
+     */
     public ScriptExecutionStack(InputProvider inputProvider, Console console) {
         this.activeScripts = new ArrayDeque<>();
         this.inputProvider = inputProvider; 

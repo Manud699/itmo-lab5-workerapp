@@ -18,6 +18,12 @@ public class UpdateByIdCommand extends AbstractCommand {
     private final WorkerMainBuilder workerBuilder; 
     
 
+    /**
+     * Constructor for the UpdateByIdCommand class.
+     * @param workerRepository the repository for managing workers
+     * @param console the console for input/output operations
+     * @param workerBuilder the builder for creating worker instances
+     */
     public UpdateByIdCommand(WorkerRepository workerRepository, Console console, WorkerMainBuilder workerBuilder) {
         super("update_by_id", "Updates a worker by ID"); 
         this.workerRepository = workerRepository; 

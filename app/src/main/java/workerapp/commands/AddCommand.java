@@ -15,7 +15,12 @@ public class AddCommand extends AbstractCommand {
     private final WorkerMainBuilder formWorker; 
 
 
-
+    /**
+     * Constructor for the AddCommand class.
+     * @param workerRepository the repository for managing workers
+     * @param console the console for input/output operations
+     * @param formWorker the builder for creating worker objects
+     */
     public AddCommand(WorkerRepository workerRepository, Console console, WorkerMainBuilder formWorker) {
         super("add", "Adds a new worker to the collection");
         this.workerRepository = workerRepository;

@@ -13,6 +13,12 @@ public class OrganizationBuilder extends AbstractConsoleBuilder<Organization>  {
     private final int MIN_ANUALT = 0; 
     private final int MIN_EMPLOYESS = 0;
     
+
+    /**
+     * Constructor for the OrganizationBuilder class.
+     * @param inputProvider the input provider for managing input sources
+     * @param console the console for input/output operations
+     */
     public OrganizationBuilder(InputProvider inputProvider, Console console) {
         super(inputProvider,console); 
     }   

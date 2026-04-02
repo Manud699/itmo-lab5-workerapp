@@ -13,7 +13,11 @@ public class ClearCommand extends AbstractCommand {
     private  WorkerRepository workerRepository; 
     private Console console; 
 
-
+    /**
+     * Constructor for the ClearCommand class.
+     * @param workerRepository the repository for managing workers
+     * @param console the console for input/output operations
+     */
     public ClearCommand(WorkerRepository workerRepository, Console console) {
         super("clear", "Clears all elements from the collection");
         this.workerRepository = workerRepository;

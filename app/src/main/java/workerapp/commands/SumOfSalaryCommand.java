@@ -16,6 +16,11 @@ public class SumOfSalaryCommand extends AbstractCommand {
     private final Console console; 
     
     
+    /**
+     * Constructor for the SumOfSalaryCommand class.
+     * @param workerRepository the repository for managing workers
+     * @param console the console for input/output operations
+     */
     public SumOfSalaryCommand(WorkerRepository workerRepository, Console console) {
         super("sum_of_salary","Displays the sum of the salaries of all elements in the collection");
         this.workerRepository = workerRepository; 

@@ -24,7 +24,9 @@ public class WorkerRepository {
     private  FormSave formSave; 
     private  FormLoad formLoad; 
 
-
+    /**
+     * Constructor for the WorkerRepository class.
+     */
     public WorkerRepository() { 
         this.workers = new ArrayDeque<>();
         this.creationDate = ZonedDateTime.now();
@@ -191,7 +193,10 @@ public class WorkerRepository {
      * @param console the Console object to use for output
      */
     public void printFieldDescendingSalary(Console console) {
-        workers.stream().map(Worker::getSalary).sorted(java.util.Comparator.reverseOrder()).forEach(salary -> console.println(" > " + salary));;
+        workers.stream()
+        .map(Worker::getSalary)
+        .sorted(java.util.Comparator.reverseOrder())
+        .forEach(salary -> console.println(" > " + salary));;
     }
 
 

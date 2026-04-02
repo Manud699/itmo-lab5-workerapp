@@ -14,7 +14,11 @@ public class InfoCommand extends AbstractCommand {
     private final Console console; 
     private final WorkerRepository workerRepository; 
 
-
+    /**
+     * Constructor for the InfoCommand class.
+     * @param workerRepository the repository for managing workers
+     * @param console the console for input/output operations
+     */
     public InfoCommand(WorkerRepository workerRepository, Console console){
         super("info", "Displays information about the collection"); 
         this.workerRepository = workerRepository; 

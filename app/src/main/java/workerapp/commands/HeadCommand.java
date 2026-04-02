@@ -1,5 +1,8 @@
 package workerapp.commands;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import workerapp.cli.Console;
 import workerapp.cli.formatter.TableDisplayable;
 import workerapp.model.Worker;
@@ -16,14 +19,18 @@ public class HeadCommand extends AbstractCommand implements TableDisplayable {
     private final Console console;  
 
 
-
+    /**
+     * Constructor for the HeadCommand class.
+     * @param workerRepository the repository for managing workers
+     * @param console the console for input/output operations
+     */
     public HeadCommand(WorkerRepository workerRepository, Console console) {
         super("head","Prints the first element of the collection"); 
         this.workerRepository = workerRepository; 
         this.console = console; 
     } 
 
-
+    int [] myArray = new int[10]; 
 
     /**
      * Executes the head command.

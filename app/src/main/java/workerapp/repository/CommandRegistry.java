@@ -22,6 +22,10 @@ public class CommandRegistry {
     private final int MAX_HISTORY_COMMANDS = 11; 
 
 
+    /**
+     * Constructor for the CommandRegistry class.
+     * @param console the console for input/output operations
+     */
     public CommandRegistry(Console console) {
         this.console = console;
         this.commands = new HashMap<>();

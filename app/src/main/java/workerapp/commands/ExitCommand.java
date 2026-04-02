@@ -10,6 +10,11 @@ public class ExitCommand extends AbstractCommand  {
 
     private final Console console; 
 
+    /**
+     *  Constructor for the ExitCommand class.
+      * @param console the console for input/output operations
+     * @param console
+     */
     public ExitCommand(Console console) {
         super("exit", "Terminates the program");
         this.console = console;
@@ -24,7 +29,6 @@ public class ExitCommand extends AbstractCommand  {
      * @return 0 if successful, another value if validation fails
      */
     public int execute(String argms) {        
-        console.println("Terminating program...");
         System.exit(0);
         return 1; 
     } 

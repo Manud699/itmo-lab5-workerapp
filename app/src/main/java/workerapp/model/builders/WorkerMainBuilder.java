@@ -24,6 +24,11 @@ public class WorkerMainBuilder extends AbstractConsoleBuilder<Worker> {
 
     private final long MIN_SALARY = 0; 
 
+    /**
+     * Constructor for the WorkerMainBuilder class.
+     * @param inputProvider the input provider for managing input sources
+     * @param console the console for input/output operations
+     */
     public WorkerMainBuilder(InputProvider inputProvider, Console console) {
         super(inputProvider, console);
     } 

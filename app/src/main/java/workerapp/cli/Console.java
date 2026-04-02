@@ -2,7 +2,7 @@ package workerapp.cli;
 
 /**
  * Console interface for handling input and output operations.
- */
+ */ 
 public interface Console {
 
     void print(Object object);

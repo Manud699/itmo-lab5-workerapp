@@ -14,7 +14,11 @@ public class HistoryCommand extends AbstractCommand {
     private final CommandRegistry commandRegistry; 
 
 
-
+    /**
+     * Constructor for the HistoryCommand class.
+     * @param commandRegistry the registry for managing commands
+     * @param console the console for input/output operations
+     */
     public HistoryCommand(CommandRegistry commandRegistry, Console console){
         super("history","Prints the last 11 executed commands (without their arguments)");
         this.commandRegistry = commandRegistry; 

@@ -19,6 +19,12 @@ public class SaveToCSV implements FormSave {
     private final Console console; 
     private final WorkerRepository workers;
 
+    /**
+     * Constructor for SaveToCSV.
+     * @param file the CSV file to save data to
+     * @param console the console for outputting messages and errors during the saving process
+     * @param workers the repository containing the Worker data to be saved
+     */
     public SaveToCSV(File file, Console console, WorkerRepository workers) {
         this.file = file;
         this.console = console;
@@ -70,7 +76,6 @@ public class SaveToCSV implements FormSave {
     public void executeSaveProtocol(File file) {
     try {
         writeWorkersToFile(file);
-        // <-- CAMBIADO a getAbsolutePath()
         console.println("Workers successfully saved to file: " + file.getAbsolutePath());
     } catch (IOException e) {
         console.printError("I/O error while saving to '" + file.getAbsolutePath() + "': " + e.getMessage());

@@ -17,6 +17,11 @@ public class RemoveByIdCommand extends AbstractCommand {
     private final Console console; 
 
 
+    /**
+     * Constructor for the RemoveByIdCommand class.
+     * @param workerRepository the repository for managing workers
+     * @param console the console for input/output operations
+     */
     public RemoveByIdCommand( WorkerRepository workerRepository, Console console){
         super("remove_by_id", "Removes an element from the collection by its ID"); 
         this.console = console;  
